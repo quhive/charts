@@ -27,3 +27,30 @@ entries:
     urls:
     - https://github.com/quhive/charts/releases/download/external-dns-0.7.4/external-dns-0.7.4.tgz
     version: 0.7.4
+  hcloud-ccm:
+  - annotations:
+      catalog.cattle.io/certified: quhive
+      catalog.cattle.io/display-name: HCloud CCM
+      catalog.cattle.io/namespace: kube-system
+      catalog.cattle.io/release-name: hcloud-ccm
+    apiVersion: v2
+    appVersion: v1.8.1
+    created: "2020-11-17T23:51:48.56405755Z"
+    description: Kubernetes cloud-controller-manager for Hetzner Cloud
+    digest: 0079d8d38eaf58e2c28e829ea369bda5186887d000920de7d5ad834403866968
+    home: https://github.com/hetznercloud/hcloud-cloud-controller-manager
+    icon: https://avatars2.githubusercontent.com/u/22154697?s=200&v=4
+    keywords:
+    - cloud-controller-manager
+    - hcloud
+    kubeVersion: '>=v1.16.0'
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: hcloud-ccm
+    sources:
+    - https://github.com/hetznercloud/hcloud-cloud-controller-manager
+    urls:
+    - https://github.com/quhive/charts/releases/download/hcloud-ccm-v1.8.1/hcloud-ccm-v1.8.1.tgz
+    version: v1.8.1
+generated: "0001-01-01T00:00:00Z"

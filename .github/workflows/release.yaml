@@ -19,9 +19,16 @@ jobs:
         with:
           version: v3.4.0
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Set up Chart-Testing
+        uses: helm/chart-testing-action@v2.0.0
+
       - name: Check Changed
         id: changed
-        uses: helm/chart-testing-action@v2.0.0
         run: |
           changed=$(ct list-changed)
           if [[ -n "$changed" ]]; then

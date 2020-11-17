@@ -496,20 +496,21 @@ rbac:
   apiVersion: v1beta1
   ## Podsecuritypolicy
   ##
-  pspEnabled: true
+values##  pspEnabled: true
 
 ## Kubernetes Security Context
 ## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 ## Example:
-securityContext:
-  allowPrivilegeEscalation: false
-  readOnlyRootFilesystem: true
-  capabilities:
-  drop: ["ALL"]
+##securityContext:
+##  allowPrivilegeEscalation: false
+##  readOnlyRootFilesystem: true
+##  capabilities:
+##    drop: ["ALL"]
+securityContext: {}
 podSecurityContext:
   fsGroup: 1001
   runAsUser: 1001
-  runAsNonRoot: true
+##  runAsNonRoot: true
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/

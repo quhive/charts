@@ -27,6 +27,6 @@ jobs:
       - name: Release Chart
         uses: helm/chart-releaser-action@v1.1.0
         with:
-          charts_repo_url: https://qumine.github.io/charts
+          charts_repo_url: https://quhive.github.io/charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

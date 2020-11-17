@@ -16,7 +16,7 @@ helm repo add quhive https://quhive.github.io/charts/
 You can then run `helm search repo quhive` to see the charts.
 
 ## Charts
-tt
+
 * [external-dns](https://github.com/quhive/charts/tree/master/charts/external-dns)
 * [hcloud-ccm](https://github.com/quhive/charts/tree/master/charts/hcloud-ccm)
 * [hcloud-csi](https://github.com/quhive/charts/tree/master/charts/hcloud-csi)

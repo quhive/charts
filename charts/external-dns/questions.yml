@@ -118,14 +118,14 @@ questions:
   label: CloudFlare API Token
   group: ExternalDNS / Provider
 - variable: cloudflare.apiKey
-  show_if: "externalDns.provider=cloudflare&&cloudflare.apiToken==\"\""
+  show_if: "externalDns.provider=cloudflare&&cloudflare.apiToken=\"\""
   description: "`CF_API_KEY` to set in the environment"
   type: password
   required: true
   label: CloudFlare API Key
   group: ExternalDNS / Provider
 - variable: cloudflare.email
-  show_if: "externalDns.provider=cloudflare&&cloudflare.apiToken==\"\""
+  show_if: "externalDns.provider=cloudflare&&cloudflare.apiToken=\"\""
   description: "`CF_API_EMAIL` to set in the environment"
   type: password
   required: true

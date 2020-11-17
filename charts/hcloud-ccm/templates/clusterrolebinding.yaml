@@ -1,0 +1,15 @@
+{{- if and .Values.rbac.create .Values.rbac.clusterRole }}
+apiVersion: rbac.authorization.k8s.io/{{ .Values.rbac.apiVersion }}
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "hcloud-ccm.fullname" . }}
+  labels: {{ include "hcloud-ccm.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ template "hcloud-ccm.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ template "hcloud-ccm.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+{{- end }}

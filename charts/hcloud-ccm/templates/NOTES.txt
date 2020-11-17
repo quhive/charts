@@ -1,0 +1,8 @@
+** Please be patient while the chart is being deployed **
+
+To verify that hcloud-ccm has started, run:
+
+  kubectl --namespace={{ .Release.Namespace }} get pods -l "app.kubernetes.io/name={{ template "hcloud-ccm.name" . }},app.kubernetes.io/instance={{ .Release.Name }}"
+
+{{ include "hcloud-ccm.validateValues" . }}
+{{ include "hcloud-ccm.checkRollingTags" . }}

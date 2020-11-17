@@ -77,13 +77,13 @@ spec:
             {{- range .Values.serviceTypeFilter }}
             - --service-type-filter={{ . }}
             {{- end }}
-            {{- range (splitList ",".Values.domainFilters) }}
+            {{- range (splitList "," .Values.domainFilters) }}
             - --domain-filter={{ trim . }}
             {{- end }}
             {{- range .Values.excludeDomains }}
             - --exclude-domains={{ . }}
             {{- end }}
-            {{- range (splitList ",".Values.zoneIdFilters) }}
+            {{- range (splitList "," .Values.zoneIdFilters) }}
             - --zone-id-filter={{ trim . }}
             {{- end }}
             - --policy={{ .Values.policy }}

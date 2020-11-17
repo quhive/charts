@@ -1,0 +1,85 @@
+categories:
+- cloud-controller-manager
+- hcloud
+questions:
+- variable: defaultImage
+  default: true
+  description: Use default Docker image
+  type: boolean
+  label: Use Default Image
+  group: HCloud-CCM / Docker Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: image.registry
+    default: docker.io
+    description: HCloud-CCM Image Registry
+    type: string
+    label: HCloud-CCM image name
+  - variable: image.repository
+    default: hetznercloud/hcloud-cloud-controller-manager
+    description: HCloud-CCM Image Repository
+    type: string
+    label: HCloud-CCM image name
+  - variable: image.tag
+    default: v1.8.1
+    description: HCloud-CCM image tag
+    type: string
+    label: HCloud-CCM Image Tag
+
+- variable: resources.requests.cpu
+  default: 25m
+  description: CPU Requests
+  type: string
+  required: true
+  label: CPU Requests
+  group: HCloud-CCM / Resources
+- variable: resources.limits.cpu
+  default: 25m
+  description: CPU Limit
+  type: string
+  required: true
+  label: CPU Limit
+  group: HCloud-CCM / Resources
+- variable: resources.requests.memory
+  default: 25Mi
+  description: Memory Requests
+  type: string
+  required: true
+  label: Memory Requests
+  group: HCloud-CCM / Resources
+- variable: resources.limits.memory
+  default: 50Mi
+  description: Memory Limit
+  type: string
+  required: true
+  label: Memory Limit
+  group: HCloud-CCM / Resources
+
+- variable: hcloudNetworks.enabled
+  default: false
+  description: Whether to use HClouds Loadbalancers Feature
+  type: boolean
+  required: true
+  label: Enable HCloud Loadbalancers
+  group: HCloud-CCM / Loadbalancers
+
+- variable: hcloudNetworks.enabled
+  default: false
+  description: Whether to use HClouds Network Feature
+  type: boolean
+  required: true
+  label: Enable HCloud Network
+  group: HCloud-CCM / Networks
+- variable: hcloudNetworks.name
+  description: Name or ID of the network to use
+  type: string
+  required: true
+  label: Network Name or ID
+  group: HCloud-CCM / Networks
+
+- variable: hcloudToken
+  description: The HCloud API Token (RW)
+  type: password
+  required: true
+  label: HCloud API Token
+  group: HCloud-CCM / General

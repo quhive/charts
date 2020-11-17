@@ -1,0 +1,129 @@
+## Global Docker image parameters
+## Please, note that this will override the image parameters, including dependencies, configured to use the global value
+## Current available global Docker image parameters: imageRegistry and imagePullSecrets
+##
+# global:
+#   imageRegistry: myRegistryName
+#   imagePullSecrets:
+#     - myRegistryKeySecretName
+
+## HCloud cloud-controller-manager image version
+## ref: https://hub.docker.com/r/hetznercloud/hcloud-cloud-controller-manager/tags
+##
+image:
+  registry: docker.io
+  repository: hetznercloud/hcloud-cloud-controller-manager
+  tag: v1.8.1
+  ## Specify a imagePullPolicy
+  ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ##
+  pullPolicy: IfNotPresent
+  ## Optionally specify an array of imagePullSecrets.
+  ## Secrets must be manually created in the namespace.
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  ##
+  # pullSecrets:
+  #   - myRegistryKeySecretName
+
+## String to partially override hcloud-ccm.fullname template (will maintain the release name)
+# nameOverride:
+
+## String to fully override hcloud-ccm.fullname template
+# fullnameOverride:
+
+hcloudToken:
+hcloudNetworks:
+  enabled: false
+  ## name:
+hcloudLoadBalancers:
+  enabled: false
+
+## Extra env. variable to set on external-dns container.
+##
+## extraEnv:
+## - name: VARNAME1
+##   value: value1
+## - name: VARNAME2
+##   valueFrom:
+##     secretKeyRef:
+##       name: existing-secret
+##       key: varname2-key
+extraEnv: []
+
+## Replica count
+##
+replicas: 1
+
+## Affinity for pod assignment (this value is evaluated as a template)
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+##
+affinity: {}
+## Node labels for pod assignment (this value is evaluated as a template)
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+##
+nodeSelector: {}
+## Tolerations for pod assignment (this value is evaluated as a template)
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
+##
+tolerations: []
+## Annotations for hcloud-ccm pods
+##
+podAnnotations: {}
+## Additional labels for the pod(s).
+##
+podLabels: {}
+## Pod priority class name
+##
+priorityClassName: ""
+
+## ServiceAccount parameters
+## https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+##
+serviceAccount:
+  create: true
+  ## Service Account for pods
+  ##
+  name:
+  ## Annotations for the Service Account
+  ##
+  annotations: {}
+
+## RBAC parameteres
+## https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+##
+rbac:
+  create: true
+  ## Deploys ClusterRole by Default
+  clusterRole: true
+  ## RBAC API version
+  ##
+  apiVersion: v1
+  ## Podsecuritypolicy
+  ##
+  ## pspEnabled: true
+
+## Kubernetes Security Context
+## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+## Example:
+## securityContext:
+##  allowPrivilegeEscalation: false
+##  readOnlyRootFilesystem: true
+##  capabilities:
+##    drop: ["ALL"]
+securityContext: {}
+podSecurityContext:
+  fsGroup: 1001
+  runAsUser: 1001
+##  runAsNonRoot: true
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  limits:
+    cpu: 100m
+    memory: 200Mi
+  requests:
+    memory: 100Mi
+    cpu: 50m

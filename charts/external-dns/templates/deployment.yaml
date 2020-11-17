@@ -77,14 +77,14 @@ spec:
             {{- range .Values.serviceTypeFilter }}
             - --service-type-filter={{ . }}
             {{- end }}
-            {{- if .Values.domainFilters }}
-            - --domain-filter={{ .Values.domainFilters }}
+            {{- range (splitList ",".Values.domainFilters) }}
+            - --domain-filter={{ trim . }}
             {{- end }}
             {{- range .Values.excludeDomains }}
             - --exclude-domains={{ . }}
             {{- end }}
-            {{- if .Values.zoneIdFilters }}
-            - --zone-id-filter={{ .Values.zoneIdFilters }}
+            {{- range (splitList ",".Values.zoneIdFilters) }}
+            - --zone-id-filter={{ trim . }}
             {{- end }}
             - --policy={{ .Values.policy }}
             - --provider={{ .Values.provider }}

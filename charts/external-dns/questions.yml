@@ -110,22 +110,33 @@ questions:
   required: true
   label: DNS Provider
   group: ExternalDNS / Provider
-- variable: cloudflare.apiToken
+- variable: cloudflare.apiAuthType
+  options:
+    - "key"
+    - "token"
+  default: "token"
   show_if: "externalDns.provider=cloudflare"
+  description: "Whether to use the API Key or Token/E-Mail for Authentication"
+  type: enum
+  required: true
+  label: CloudFlare API Auth Type
+  group: ExternalDNS / Provider
+- variable: cloudflare.apiToken
+  show_if: "externalDns.provider=cloudflare&&cloudflare.apiAuthType=token"
   description: "`CF_API_TOKEN` to set in the environment"
   type: password
   required: true
   label: CloudFlare API Token
   group: ExternalDNS / Provider
 - variable: cloudflare.apiKey
-  show_if: "externalDns.provider=cloudflare&&cloudflare.apiToken==\"\""
+  show_if: "externalDns.provider=cloudflare&&cloudflare.apiAuthType=key"
   description: "`CF_API_KEY` to set in the environment"
   type: password
   required: true
   label: CloudFlare API Key
   group: ExternalDNS / Provider
 - variable: cloudflare.email
-  show_if: "externalDns.provider=cloudflare&&cloudflare.apiToken==\"\""
+  show_if: "externalDns.provider=cloudflare&&cloudflare.apiAuthType=key"
   description: "`CF_API_EMAIL` to set in the environment"
   type: password
   required: true

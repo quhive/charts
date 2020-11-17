@@ -40,5 +40,4 @@ jobs:
         if: steps.changed.outputs.changed == 'true'
 
       - name: Install Chart
-        uses: helm/chart-testing-action@v2.0.0
         run: ct install

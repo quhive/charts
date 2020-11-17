@@ -1,0 +1,141 @@
+categories:
+- external-dns
+- network
+- dns
+questions:
+- variable: defaultImage
+  default: true
+  description: Use default Docker image
+  type: boolean
+  label: Use Default Image
+  group: ExternalDNS / Docker Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: image.registry
+    default: docker.io
+    description: ExternalDNS Image Registry
+    type: string
+    label: ExternalDNS image name
+  - variable: image.repository
+    default: bitnami/external-dns
+    description: ExternalDNS Image Repository
+    type: string
+    label: ExternalDNS image name
+  - variable: image.tag
+    default: 0.7.4-debian-10-r41
+    description: ExternalDNS image tag
+    type: string
+    label: ExternalDNS Image Tag
+
+- variable: resources.requests.cpu
+  default: 25m
+  description: CPU Requests
+  type: string
+  required: true
+  label: CPU Requests
+  group: ExternalDNS / Resources
+- variable: resources.limits.cpu
+  default: 25m
+  description: CPU Limit
+  type: string
+  required: true
+  label: CPU Limit
+  group: ExternalDNS / Resources
+- variable: resources.requests.memory
+  default: 25Mi
+  description: Memory Requests
+  type: string
+  required: true
+  label: Memory Requests
+  group: ExternalDNS / Resources
+- variable: resources.limits.memory
+  default: 50Mi
+  description: Memory Limit
+  type: string
+  required: true
+  label: Memory Limit
+  group: ExternalDNS / Resources
+
+- variable: metrics.enabled
+  default: false
+  description: Enable metrics
+  type: boolean
+  required: true
+  label: Enable Metrics
+  group: ExternalDNS / Integrations
+- variable: metrics.serviceMonitor.enabled
+  show_if: "metrics.enabled"
+  default: false
+  description: Enable Prometheus ServiceMonitor
+  type: boolean
+  required: true
+  label: Enable ServiceMonitor
+  group: ExternalDNS / Integrations
+
+- variable: domainFilters
+  description: Limit possible target zones by domain suffixes
+  type: multiline
+  required: true
+  label: Domain filters
+  group: ExternalDNS / Filters
+- variable: zoneIdFilters
+  description: Limit possible target zones by zone id
+  type: multiline
+  label: ZoneID Filters
+  group: ExternalDNS / Filters
+
+- variable: externalDns.registry
+  options:
+    - "noop"
+    - "txt"
+  default: "txt"
+  description: Registry Type
+  type: enum
+  label: Registry Type
+  group: ExternalDNS / Registry
+- variable: externalDns.txtOwnerId
+  show_if: "externalDns.registry=txt"
+  description: The txt-owner-id for the txt records
+  type: string
+  default: default
+  label: TXT Owner ID
+  group: ExternalDNS / Registry
+
+- variable: externalDns.provider
+  options:
+    - "cloudflare"
+  default: "cloudflare"
+  description: DNS provider where the DNS records will be created
+  type: enum
+  required: true
+  label: DNS Provider
+  group: ExternalDNS / Provider
+- variable: cloudflare.apiToken
+  show_if: "externalDns.provider=cloudflare"
+  description: "`CF_API_TOKEN` to set in the environment"
+  type: password
+  required: true
+  label: CloudFlare API Token
+  group: ExternalDNS / Provider
+- variable: cloudflare.apiKey
+  show_if: "externalDns.provider=cloudflare&&cloudflare.apiToken==\"\""
+  description: "`CF_API_KEY` to set in the environment"
+  type: password
+  required: true
+  label: CloudFlare API Key
+  group: ExternalDNS / Provider
+- variable: cloudflare.email
+  show_if: "externalDns.provider=cloudflare&&cloudflare.apiToken==\"\""
+  description: "`CF_API_EMAIL` to set in the environment"
+  type: password
+  required: true
+  label: CloudFlare E-Mail
+  group: ExternalDNS / Provider
+- variable: cloudflare.proxied
+  show_if: "externalDns.provider=cloudflare"
+  default: true
+  description: Enable the proxy feature of Cloudflare
+  type: boolean
+  required: true
+  label: CloudFlare Proxied
+  group: ExternalDNS / Provider

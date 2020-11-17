@@ -110,31 +110,6 @@ imagePullSecrets:
 {{- end -}}
 {{- end -}}
 
-{{/*
-Compile all warnings into a single message, and call fail.
-*/}}
-{{- define "hcloud-ccm.validateValues" -}}
-{{- $messages := list -}}
-{{- $messages := append $messages (include "hcloud-ccm.validateValues.provider" .) -}}
-{{- $messages := without $messages "" -}}
-{{- $message := join "\n" $messages -}}
-
-{{- if $message -}}
-{{-   printf "\nVALUES VALIDATION:\n%s" $message | fail -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
-Validate values of HCloud:
-- must set a provider
-*/}}
-{{- define "hcloud-ccm.validateValues.provider" -}}
-{{- if not .Values.provider -}}
-hcloud: token
-    Please set the provider parameter (--set token="xxxx")
-{{- end -}}
-{{- end -}}
-
 {/*
 Return the HCloud service account name
 */}}
@@ -144,11 +119,4 @@ Return the HCloud service account name
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
-{{- end -}}
-
-{{/* Check if there are rolling tags in the images */}}
-{{- define "hcloud-ccm.checkRollingTags" -}}
-{{- if and (contains "hetznercloud/" .Values.image.repository) (not (.Values.image.tag | toString | regexFind "-r\\d+$|sha256:")) }}
-WARNING: Rolling tag detected ({{ .Values.image.repository }}:{{ .Values.image.tag }}), please note that it is strongly recommended to avoid using rolling tags in a production environment.
-{{- end }}
 {{- end -}}

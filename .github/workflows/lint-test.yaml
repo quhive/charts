@@ -1,0 +1,43 @@
+name: Lint and Test Charts
+
+on: pull_request
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Check Changed
+        id: changed
+        uses: helm/chart-testing-action@v2.0.0
+        run: |
+          changed=$(ct list-changed)
+          if [[ -n "$changed" ]]; then
+            echo "::set-output name=changed::true"
+          fi
+
+      - name: Lint Chart
+        uses: helm/chart-testing-action@v2.0.0
+        run: ct lint
+
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.0.0
+        if: steps.changed.outputs.changed == 'true'
+
+      - name: Install Chart
+        uses: helm/chart-testing-action@v2.0.0
+        run: ct install

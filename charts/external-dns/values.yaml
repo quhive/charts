@@ -496,7 +496,7 @@ rbac:
   apiVersion: v1beta1
   ## Podsecuritypolicy
   ##
-values##  pspEnabled: true
+  ## pspEnabled: true
 
 ## Kubernetes Security Context
 ## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/

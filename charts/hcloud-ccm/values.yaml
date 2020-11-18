@@ -38,18 +38,8 @@ hcloudNetworks:
   ## name:
 hcloudLoadBalancers:
   enabled: false
-
-## Extra env. variable to set on external-dns container.
-##
-## extraEnv:
-## - name: VARNAME1
-##   value: value1
-## - name: VARNAME2
-##   valueFrom:
-##     secretKeyRef:
-##       name: existing-secret
-##       key: varname2-key
-extraEnv: []
+  ## defaultLocation:
+  ## defaultUsePrivateIp
 
 ## Replica count
 ##
@@ -81,10 +71,6 @@ priorityClassName: ""
 ## https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 ##
 serviceAccount:
-  create: true
-  ## Service Account for pods
-  ##
-  name:
   ## Annotations for the Service Account
   ##
   annotations: {}
@@ -93,9 +79,6 @@ serviceAccount:
 ## https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 ##
 rbac:
-  create: true
-  ## Deploys ClusterRole by Default
-  clusterRole: true
   ## RBAC API version
   ##
   apiVersion: v1

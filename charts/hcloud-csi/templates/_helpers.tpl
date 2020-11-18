@@ -32,6 +32,17 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{/* Helm required labels */}}
+{{- define "hcloud-csi.labels" -}}
+app.kubernetes.io/name: {{ template "hcloud-csi.name" . }}
+helm.sh/chart: {{ template "hcloud-csi.chart" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- if .Values.podLabels }}
+{{ toYaml .Values.podLabels }}
+{{- end }}
+{{- end -}}
+
+{{/* Helm required labels */}}
 {{- define "hcloud-csi.labelsController" -}}
 app.kubernetes.io/name: {{ template "hcloud-csi.name" . }}
 helm.sh/chart: {{ template "hcloud-csi.chart" . }}

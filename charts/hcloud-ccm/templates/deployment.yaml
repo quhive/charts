@@ -13,7 +13,7 @@ spec:
       annotations:
         scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
-      serviceAccountName: {{ template "hcloud-ccm.serviceAccountName" . }}
+      serviceAccountName: {{ template "hcloud-ccm.fullname" . }}
       tolerations:
         # this taint is set by all kubelets running `--cloud-provider=external`
         # so we should tolerate it to schedule the cloud controller manager

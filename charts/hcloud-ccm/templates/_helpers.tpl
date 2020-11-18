@@ -109,14 +109,3 @@ imagePullSecrets:
 {{- end }}
 {{- end -}}
 {{- end -}}
-
-{/*
-Return the HCloud service account name
-*/}}
-{{- define "hcloud-ccm.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create -}}
-    {{ default (include "hcloud-ccm.fullname" .) .Values.serviceAccount.name }}
-{{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
-{{- end -}}
-{{- end -}}

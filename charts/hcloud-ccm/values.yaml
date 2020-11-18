@@ -40,6 +40,7 @@ hcloudLoadBalancers:
   enabled: false
   ## defaultLocation:
   ## defaultUsePrivateIp
+  ## defaultDisablePrivateIngress
 
 ## Replica count
 ##

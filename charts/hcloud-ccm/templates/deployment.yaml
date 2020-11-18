@@ -70,3 +70,7 @@ spec:
             - name: HCLOUD_LOAD_BALANCERS_DEFAULT_USE_PRIVATE_IP
               value: "true"
             {{- end }}
+            {{- if .Values.hcloudLoadBalancers.defaultDisablePrivateIngress }}
+            - name: HCLOUD_LOAD_BALANCERS_DEFAULT_DISABLE_PRIVATE_INGRESS
+              value: "true"
+            {{- end }}

@@ -1,0 +1,57 @@
+categories:
+- csi-driver
+- hcloud
+questions:
+- variable: defaultImage
+  default: true
+  description: Use default Docker image
+  type: boolean
+  label: Use Default Image
+  group: HCloud-CSI / Docker Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: image.registry
+    default: docker.io
+    description: HCloud-CSI Image Registry
+    type: string
+    label: HCloud-CSI image name
+  - variable: image.repository
+    default: hetznercloud/hcloud-csi-driver
+    description: HCloud-CSI Image Repository
+    type: string
+    label: HCloud-CSI image name
+  - variable: image.tag
+    default: v1.5.1
+    description: HCloud-CSI image tag
+    type: string
+    label: HCloud-CSI Image Tag
+
+- variable: metrics.enabled
+  default: false
+  description: Enable metrics
+  type: boolean
+  required: true
+  label: Enable Metrics
+  group: HCloud-CSI / Integrations
+- variable: metrics.serviceMonitor.enabled
+  show_if: "metrics.enabled"
+  default: false
+  description: Enable Prometheus ServiceMonitor
+  type: boolean
+  required: true
+  label: Enable ServiceMonitor
+  group: HCloud-CSI / Integrations
+
+- variable: defaultStorageClass
+  description: Make the hcloud-csi StorageClass the default
+  type: password
+  required: true
+  label: Default StorageClass
+  group: HCloud-CSI / StorageClass
+
+- variable: hcloudToken
+  description: The HCloud API Token (RW)
+  type: password
+  required: true
+  label: HCloud API Token
+  group: HCloud-CSI / General

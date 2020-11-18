@@ -70,6 +70,12 @@ app.kubernetes.io/component: node
 {{- define "hcloud-csi.matchLabels" -}}
 app.kubernetes.io/name: {{ template "hcloud-csi.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}
+
+{{/* matchLabels */}}
+{{- define "hcloud-csi.matchLabelsController" -}}
+app.kubernetes.io/name: {{ template "hcloud-csi.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/component: controller
 {{- end -}}
 

@@ -51,7 +51,7 @@ spec:
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: hcloud-ccm
+                  name: {{ template "hcloud-ccm.fullname" . }}
                   key: hcloud-token
             {{- if .Values.hcloudNetworks.enabled }}
             - name: HCLOUD_NETWORK

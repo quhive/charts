@@ -67,5 +67,5 @@ spec:
             {{- end }}
             {{- if .Values.hcloudLoadBalancers.defaultUsePrivateIp }}
             - name: HCLOUD_LOAD_BALANCERS_DEFAULT_USE_PRIVATE_IP
-              value: {{ .Values.hcloudLoadBalancers.defaultUsePrivateIp }}
+              value: "true"
             {{- end }}

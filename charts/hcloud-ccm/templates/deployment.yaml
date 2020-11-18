@@ -40,6 +40,7 @@ spec:
             - "--allow-untagged-cloud"
             - "--allocate-node-cidrs=true"
             - "--cluster-cidr=10.42.0.0/16"
+            - "--feature-gates=LegacyNodeRoleBehavior=false"
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}

@@ -2,15 +2,15 @@ kind: StatefulSet
 apiVersion: apps/v1
 metadata:
   name: {{ template "hcloud-csi.fullname" . }}
-  labels: {{ include "hcloud-csi.labels" . | nindent 4 }}
+  labels: {{ include "hcloud-csi.labelsController" . | nindent 4 }}
 spec:
   selector:
-    matchLabels: {{ include "hcloud-csi.matchLabels" . | nindent 6 }}
+    matchLabels: {{ include "hcloud-csi.matchLabelsController" . | nindent 6 }}
   serviceName: "{{ template "hcloud-csi.fullname" . }}-controller"
   replicas: 1
   template:
     metadata:
-      labels: {{ include "hcloud-csi.labels" . | nindent 8 }}
+      labels: {{ include "hcloud-csi.labelsController" . | nindent 8 }}
     spec:
       serviceAccount: {{ template "hcloud-csi.fullname" . }}
       containers:

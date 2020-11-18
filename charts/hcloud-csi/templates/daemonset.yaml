@@ -2,13 +2,13 @@ kind: DaemonSet
 apiVersion: apps/v1
 metadata:
   name: {{ template "hcloud-csi.fullname" . }}
-  labels: {{ include "hcloud-csi.labels" . | nindent 4 }}
+  labels: {{ include "hcloud-csi.labelsNode" . | nindent 4 }}
 spec:
   selector:
-    matchLabels: {{ include "hcloud-csi.matchLabels" . | nindent 6 }}
+    matchLabels: {{ include "hcloud-csi.matchLabelsNode" . | nindent 6 }}
   template:
     metadata:
-      labels: {{ include "hcloud-csi.labels" . | nindent 8 }}
+      labels: {{ include "hcloud-csi.labelsNode" . | nindent 8 }}
     spec:
       serviceAccountName: {{ template "hcloud-csi.fullname" . }}
       tolerations:

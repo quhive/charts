@@ -5,7 +5,7 @@ metadata:
   name: {{ template "hcloud-csi.fullname" . }}
   labels: {{ include "hcloud-csi.labels" . | nindent 4 }}
   annotations:
-    {{- if .Values.hcloud.defaultStorageClass }}
+    {{- if .Values.defaultStorageClass }}
     storageclass.kubernetes.io/is-default-class: "true"
     {{- end }}
 provisioner: csi.hetzner.cloud

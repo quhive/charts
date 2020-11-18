@@ -21,7 +21,7 @@ questions:
     type: string
     label: HCloud-CSI image name
   - variable: image.tag
-    default: v1.5.1
+    default: 1.5.1
     description: HCloud-CSI image tag
     type: string
     label: HCloud-CSI Image Tag

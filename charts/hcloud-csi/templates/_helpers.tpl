@@ -32,11 +32,24 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{/* Helm required labels */}}
-{{- define "hcloud-csi.labels" -}}
+{{- define "hcloud-csi.labelsController" -}}
 app.kubernetes.io/name: {{ template "hcloud-csi.name" . }}
 helm.sh/chart: {{ template "hcloud-csi.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+app.kubernetes.io/component: controller
+{{- if .Values.podLabels }}
+{{ toYaml .Values.podLabels }}
+{{- end }}
+{{- end -}}
+
+{{/* Helm required labels */}}
+{{- define "hcloud-csi.labelsNode" -}}
+app.kubernetes.io/name: {{ template "hcloud-csi.name" . }}
+helm.sh/chart: {{ template "hcloud-csi.chart" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+app.kubernetes.io/component: node
 {{- if .Values.podLabels }}
 {{ toYaml .Values.podLabels }}
 {{- end }}
@@ -46,6 +59,14 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- define "hcloud-csi.matchLabels" -}}
 app.kubernetes.io/name: {{ template "hcloud-csi.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/component: controller
+{{- end -}}
+
+{{/* matchLabels */}}
+{{- define "hcloud-csi.matchLabelsNode" -}}
+app.kubernetes.io/name: {{ template "hcloud-csi.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/component: node
 {{- end -}}
 
 {{/* podAnnotations */}}

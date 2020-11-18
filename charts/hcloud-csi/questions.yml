@@ -43,8 +43,9 @@ questions:
   group: HCloud-CSI / Integrations
 
 - variable: defaultStorageClass
+  default: false
   description: Make the hcloud-csi StorageClass the default
-  type: password
+  type: boolean
   required: true
   label: Default StorageClass
   group: HCloud-CSI / StorageClass

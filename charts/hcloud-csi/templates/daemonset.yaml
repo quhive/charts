@@ -5,12 +5,12 @@ metadata:
   labels: {{ include "hcloud-csi.labels" . | nindent 4 }}
 spec:
   selector:
-    matchLabels: {{ include "hcloud-ccm.matchLabels" . | nindent 6 }}
+    matchLabels: {{ include "hcloud-csi.matchLabels" . | nindent 6 }}
   template:
     metadata:
-      labels: {{ include "hcloud-ccm.labels" . | nindent 8 }}
+      labels: {{ include "hcloud-csi.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ template "hcloud-ccm.fullname" . }}
+      serviceAccountName: {{ template "hcloud-csi.fullname" . }}
       tolerations:
         - effect: NoExecute
           operator: Exists

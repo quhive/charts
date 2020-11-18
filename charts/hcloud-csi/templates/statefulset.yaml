@@ -5,14 +5,14 @@ metadata:
   labels: {{ include "hcloud-csi.labels" . | nindent 4 }}
 spec:
   selector:
-    matchLabels: {{ include "hcloud-ccm.matchLabels" . | nindent 6 }}
+    matchLabels: {{ include "hcloud-csi.matchLabels" . | nindent 6 }}
   serviceName: "{{ template "hcloud-csi.fullname" . }}-controller"
   replicas: 1
   template:
     metadata:
-      labels: {{ include "hcloud-ccm.labels" . | nindent 8 }}
+      labels: {{ include "hcloud-csi.labels" . | nindent 8 }}
     spec:
-      serviceAccount: {{ template "hcloud-ccm.fullname" . }}
+      serviceAccount: {{ template "hcloud-csi.fullname" . }}
       containers:
         - name: csi-attacher
           image: quay.io/k8scsi/csi-attacher:v2.2.0

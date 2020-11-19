@@ -1,5 +1,61 @@
 apiVersion: v1
 entries:
+  cert-manager:
+  - annotations:
+      catalog.cattle.io/auto-install: cert-manager-crd=match
+      catalog.cattle.io/certified: quhive
+      catalog.cattle.io/display-name: cert-manager
+      catalog.cattle.io/namespace: cert-manager
+      catalog.cattle.io/release-name: cert-manager
+    apiVersion: v2
+    appVersion: v1.0.4
+    created: "2020-11-19T23:51:08.876729574Z"
+    description: cert-manager is a x509 certificate manager for Kubernetes.
+    digest: 241c7392d087f22297cae96e73b37fd9ce3fd0ea107206ca1260f1c2b28f834b
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    kubeVersion: '>=v1.11.0'
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager
+    sources:
+    - https://github.com/quhive/charts/tree/master/charts/cert-manager
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - https://github.com/quhive/charts/releases/download/cert-manager-1.0.4/cert-manager-1.0.4.tgz
+    version: 1.0.4
+  cert-manager-crd:
+  - annotations:
+      catalog.cattle.io/certified: quhive
+      catalog.cattle.io/hidden: "true"
+      catalog.cattle.io/namespace: cert-manager
+      catalog.cattle.io/release-name: cert-manager-crd
+    apiVersion: v2
+    appVersion: v1.0.4
+    created: "2020-11-19T23:51:09.018405845Z"
+    description: cert-manager is a x509 certificate manager for Kubernetes.
+    digest: 39e8cc73187213cefd0e24411f7240e9ac7be354db74dbfd8eb28cd55b091278
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager-crd
+    sources:
+    - https://github.com/quhive/charts/tree/master/charts/cert-manager
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - https://github.com/quhive/charts/releases/download/cert-manager-crd-1.0.4/cert-manager-crd-1.0.4.tgz
+    version: 1.0.4
   external-dns:
   - annotations:
       catalog.cattle.io/certified: quhive

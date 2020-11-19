@@ -1,0 +1,15 @@
+{{- if .Values.global.podSecurityPolicy.enabled }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "cert-manager.fullname" . }}-psp
+  labels: {{ include "cert-manager.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ template "cert-manager.fullname" . }}-psp
+subjects:
+  - kind: ServiceAccount
+    name: {{ template "cert-manager.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+{{- end }}

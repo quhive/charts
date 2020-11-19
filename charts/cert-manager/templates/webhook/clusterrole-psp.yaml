@@ -1,0 +1,13 @@
+{{- if .Values.global.podSecurityPolicy.enabled }}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ template "webhook.fullname" . }}-psp
+  labels: {{ include "webhook.labels" . | nindent 4 }}
+rules:
+- apiGroups: ['policy']
+  resources: ['podsecuritypolicies']
+  verbs:     ['use']
+  resourceNames:
+  - {{ template "webhook.fullname" . }}
+{{- end }} 

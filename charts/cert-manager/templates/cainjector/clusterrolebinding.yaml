@@ -1,0 +1,17 @@
+{{- if .Values.cainjector.enabled -}}
+{{- if .Values.global.rbac.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "cainjector.fullname" . }}
+  labels: {{ include "cainjector.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ template "cainjector.fullname" . }}
+subjects:
+  - name: {{ template "cainjector.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace | quote }}
+    kind: ServiceAccount
+{{- end -}}
+{{- end -}}

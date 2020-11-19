@@ -1,0 +1,217 @@
+categories:
+- external-dns
+- network
+- dns
+questions:
+- variable: cainjector.defaultImage
+  default: true
+  description: Use default Docker image
+  type: boolean
+  label: Use Default Image
+  group: cainjector / Docker Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: cainjector.image.registry
+    default: docker.io
+    description: cainjector Image Registry
+    type: string
+    label: cainjector image name
+  - variable: cainjector.image.repository
+    default: bitnami/external-dns
+    description: cainjector Image Repository
+    type: string
+    label: cainjector image name
+  - variable: cainjector.image.tag
+    default: v1.0.4
+    description: cainjector image tag
+    type: string
+    label: cainjector Image Tag
+
+- variable: cainjector.resources.requests.cpu
+  default: 25m
+  description: CPU Requests
+  type: string
+  required: true
+  label: CPU Requests
+  group: cainjector / Resources
+- variable: cainjector.resources.limits.cpu
+  default: 25m
+  description: CPU Limit
+  type: string
+  required: true
+  label: CPU Limit
+  group: cainjector / Resources
+- variable: cainjector.resources.requests.memory
+  default: 25Mi
+  description: Memory Requests
+  type: string
+  required: true
+  label: Memory Requests
+  group: cainjector / Resources
+- variable: cainjector.resources.limits.memory
+  default: 50Mi
+  description: Memory Limit
+  type: string
+  required: true
+  label: Memory Limit
+  group: cainjector / Resources
+
+- variable: cainjector.replicaCount
+  default: true
+  description: Whether caininjector should be enabled
+  type: boolean
+  required: true
+  label: Enable
+  group: cainjector / General
+- variable: cainjector.replicas
+  default: 1
+  description: The amount of replicas for caininjector
+  type: int
+  required: true
+  label: Replica Count
+  group: cainjector / General
+
+- variable: webhook.defaultImage
+  default: true
+  description: Use default Docker image
+  type: boolean
+  label: Use Default Image
+  group: webhook / Docker Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: webhook.image.registry
+    default: docker.io
+    description: webhook Image Registry
+    type: string
+    label: webhook image name
+  - variable: webhook.image.repository
+    default: bitnami/external-dns
+    description: webhook Image Repository
+    type: string
+    label: webhook image name
+  - variable: webhook.image.tag
+    default: v1.0.4
+    description: webhook image tag
+    type: string
+    label: webhook Image Tag
+
+- variable: webhook.resources.requests.cpu
+  default: 25m
+  description: CPU Requests
+  type: string
+  required: true
+  label: CPU Requests
+  group: webhook / Resources
+- variable: webhook.resources.limits.cpu
+  default: 25m
+  description: CPU Limit
+  type: string
+  required: true
+  label: CPU Limit
+  group: webhook / Resources
+- variable: webhook.resources.requests.memory
+  default: 25Mi
+  description: Memory Requests
+  type: string
+  required: true
+  label: Memory Requests
+  group: webhook / Resources
+- variable: webhook.resources.limits.memory
+  default: 50Mi
+  description: Memory Limit
+  type: string
+  required: true
+  label: Memory Limit
+  group: webhook / Resources
+
+- variable: webhook.replicaCount
+  default: 1
+  description: The amount of replicas for webhook
+  type: int
+  required: true
+  label: Replica Count
+  group: webhook / General
+- variable: webhook.timeoutSeconds
+  default: 10
+  description: The timeout for the wehooks
+  type: int
+  required: true
+  label: Timeout
+  group: webhook / General
+
+- variable: defaultImage
+  default: true
+  description: Use default Docker image
+  type: boolean
+  label: Use Default Image
+  group: cert-manager / Docker Images
+  show_subquestion_if: false
+  subquestions:
+  - variable: image.registry
+    default: docker.io
+    description: cert-manager Image Registry
+    type: string
+    label: cert-manager image name
+  - variable: image.repository
+    default: bitnami/external-dns
+    description: cert-manager Image Repository
+    type: string
+    label: cert-manager image name
+  - variable: image.tag
+    default: v1.0.4
+    description: cert-manager image tag
+    type: string
+    label: cert-manager Image Tag
+
+- variable: resources.requests.cpu
+  default: 25m
+  description: CPU Requests
+  type: string
+  required: true
+  label: CPU Requests
+  group: cert-manager / Resources
+- variable: resources.limits.cpu
+  default: 25m
+  description: CPU Limit
+  type: string
+  required: true
+  label: CPU Limit
+  group: cert-manager / Resources
+- variable: resources.requests.memory
+  default: 25Mi
+  description: Memory Requests
+  type: string
+  required: true
+  label: Memory Requests
+  group: cert-manager / Resources
+- variable: resources.limits.memory
+  default: 50Mi
+  description: Memory Limit
+  type: string
+  required: true
+  label: Memory Limit
+  group: cert-manager / Resources
+
+- variable: prometheus.enabled
+  default: false
+  description: Enable metrics
+  type: boolean
+  required: true
+  label: Enable Metrics
+  group: cert-manager / Integrations
+- variable: prometheus.serviceMonitor.enabled
+  show_if: "metrics.enabled"
+  default: false
+  description: Enable Prometheus ServiceMonitor
+  type: boolean
+  required: true
+  label: Enable ServiceMonitor
+  group: cert-manager / Integrations
+
+- variable: replicaCount
+  default: 1
+  description: The amount of replicas for cert-manager
+  type: int
+  required: true
+  label: Replica Count
+  group: cert-manager / General

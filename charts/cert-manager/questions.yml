@@ -200,7 +200,7 @@ questions:
   label: Enable Metrics
   group: cert-manager / Integrations
 - variable: prometheus.serviceMonitor.enabled
-  show_if: "metrics.enabled"
+  show_if: "prometheus.enabled"
   default: false
   description: Enable Prometheus ServiceMonitor
   type: boolean

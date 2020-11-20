@@ -39,6 +39,7 @@ strategy: {}
 featureGates: ""
 
 image:
+  registry: quay.io
   repository: quay.io/jetstack/cert-manager-controller
   # You can manage a registry with
   # registry: quay.io
@@ -249,6 +250,7 @@ webhook:
   podLabels: {}
 
   image:
+    registry: quay.io
     repository: quay.io/jetstack/cert-manager-webhook
     # You can manage a registry with
     # registry: quay.io
@@ -339,6 +341,7 @@ cainjector:
   podLabels: {}
 
   image:
+    registry: quay.io
     repository: quay.io/jetstack/cert-manager-cainjector
     # You can manage a registry with
     # registry: quay.io

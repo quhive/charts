@@ -12,7 +12,7 @@ questions:
   show_subquestion_if: false
   subquestions:
   - variable: cainjector.image.registry
-    default: docker.io
+    default: quay.io
     description: cainjector Image Registry
     type: string
     label: cainjector image name
@@ -80,7 +80,7 @@ questions:
   show_subquestion_if: false
   subquestions:
   - variable: webhook.image.registry
-    default: docker.io
+    default: quay.io
     description: webhook Image Registry
     type: string
     label: webhook image name
@@ -148,7 +148,7 @@ questions:
   show_subquestion_if: false
   subquestions:
   - variable: image.registry
-    default: docker.io
+    default: quay.io
     description: cert-manager Image Registry
     type: string
     label: cert-manager image name

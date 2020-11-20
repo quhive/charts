@@ -218,10 +218,10 @@ webhook:
 
   resources:
     limits:
-      cpu: 50m
-      memory: 50Mi
+      cpu: 100m
+      memory: 128Mi
     requests:
-      memory: 25Mi
+      memory: 32Mi
       cpu: 25m
 
   ## Liveness and readiness probe values
@@ -325,10 +325,10 @@ cainjector:
 
   resources:
     limits:
-      cpu: 50m
-      memory: 50Mi
+      cpu: 100m
+      memory: 128Mi
     requests:
-      memory: 25Mi
+      memory: 32Mi
       cpu: 25m
 
   nodeSelector: {}

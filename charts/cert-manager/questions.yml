@@ -35,21 +35,21 @@ questions:
   label: CPU Requests
   group: cainjector / Resources
 - variable: cainjector.resources.limits.cpu
-  default: 25m
+  default: 100m
   description: CPU Limit
   type: string
   required: true
   label: CPU Limit
   group: cainjector / Resources
 - variable: cainjector.resources.requests.memory
-  default: 25Mi
+  default: 32Mi
   description: Memory Requests
   type: string
   required: true
   label: Memory Requests
   group: cainjector / Resources
 - variable: cainjector.resources.limits.memory
-  default: 50Mi
+  default: 128Mi
   description: Memory Limit
   type: string
   required: true
@@ -103,21 +103,21 @@ questions:
   label: CPU Requests
   group: webhook / Resources
 - variable: webhook.resources.limits.cpu
-  default: 25m
+  default: 100m
   description: CPU Limit
   type: string
   required: true
   label: CPU Limit
   group: webhook / Resources
 - variable: webhook.resources.requests.memory
-  default: 25Mi
+  default: 32Mi
   description: Memory Requests
   type: string
   required: true
   label: Memory Requests
   group: webhook / Resources
 - variable: webhook.resources.limits.memory
-  default: 50Mi
+  default: 128Mi
   description: Memory Limit
   type: string
   required: true
@@ -171,21 +171,21 @@ questions:
   label: CPU Requests
   group: cert-manager / Resources
 - variable: resources.limits.cpu
-  default: 25m
+  default: 100m
   description: CPU Limit
   type: string
   required: true
   label: CPU Limit
   group: cert-manager / Resources
 - variable: resources.requests.memory
-  default: 25Mi
+  default: 32Mi
   description: Memory Requests
   type: string
   required: true
   label: Memory Requests
   group: cert-manager / Resources
 - variable: resources.limits.memory
-  default: 50Mi
+  default: 128Mi
   description: Memory Limit
   type: string
   required: true

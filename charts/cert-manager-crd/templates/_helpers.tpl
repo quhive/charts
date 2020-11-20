@@ -49,8 +49,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 If release name contains chart name it will be used as a full name.
 */}}
 {{- define "webhook.fullname" -}}
-{{- $trimmedName := printf "%s" (include "cert-manager.fullname" .) | trunc 55 | trimSuffix "-" -}}
-{{- printf "%s-webhook" $trimmedName | trunc 63 | trimSuffix "-" -}}
+{{- printf "cert-manager-webhook" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "webhook.caRef" -}}

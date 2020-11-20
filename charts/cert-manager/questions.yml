@@ -17,7 +17,7 @@ questions:
     type: string
     label: cainjector image name
   - variable: cainjector.image.repository
-    default: bitnami/external-dns
+    default: jetstack/cert-manager-cainjector
     description: cainjector Image Repository
     type: string
     label: cainjector image name
@@ -85,7 +85,7 @@ questions:
     type: string
     label: webhook image name
   - variable: webhook.image.repository
-    default: bitnami/external-dns
+    default: jetstack/cert-manager-webhook
     description: webhook Image Repository
     type: string
     label: webhook image name
@@ -153,7 +153,7 @@ questions:
     type: string
     label: cert-manager image name
   - variable: image.repository
-    default: bitnami/external-dns
+    default: jetstack/cert-manager-controller
     description: cert-manager Image Repository
     type: string
     label: cert-manager image name

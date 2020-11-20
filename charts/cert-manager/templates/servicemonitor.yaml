@@ -15,7 +15,7 @@ metadata:
 spec:
   jobLabel: {{ template "cert-manager.fullname" . }}
   selector:
-    matchLabels: {{ include "cert-manager.labels" . | nindent 4 }}
+    matchLabels: {{ include "cert-manager.labels" . | nindent 6 }}
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}

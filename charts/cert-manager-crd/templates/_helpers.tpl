@@ -42,3 +42,17 @@ helm.sh/chart: {{ template "cert-manager.chart" . }}
 {{ toYaml .Values.podLabels }}
 {{- end }}
 {{- end -}}
+
+{{/*
+Create a default fully qualified app name.
+We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+If release name contains chart name it will be used as a full name.
+*/}}
+{{- define "webhook.fullname" -}}
+{{- $trimmedName := printf "%s" (include "cert-manager.fullname" .) | trunc 55 | trimSuffix "-" -}}
+{{- printf "%s-webhook" $trimmedName | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "webhook.caRef" -}}
+{{ .Release.Namespace}}/{{ template "webhook.fullname" . }}-ca
+{{- end -}}

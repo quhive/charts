@@ -37,8 +37,8 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ template "caininjector.image" . }}"
-          imagePullPolicy: {{ .Values.caininjector.image.pullPolicy | quote }}
+          image: "{{ template "cainjector.image" . }}"
+          imagePullPolicy: {{ .Values.cainjector.image.pullPolicy | quote }}
           args:
           {{- if .Values.global.logLevel }}
           - --v={{ .Values.global.logLevel }}

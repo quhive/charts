@@ -433,7 +433,7 @@ crd:
   ## Install and use the integrated DNSEndpoint CRD
   create: false
   ## Change these to use an external DNSEndpoint CRD (E.g. from kubefed)
-  apiversion: "externaldns.k8s.io"
+  apiversion: "externaldns.k8s.io/v1alpha1"
   kind: "DNSEndpoint"
 
 ## Kubernetes svc configutarion

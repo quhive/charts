@@ -6,6 +6,7 @@ description: cert-manager is a x509 certificate manager for Kubernetes.
 home: https://github.com/jetstack/cert-manager
 keywords:
 - cert-manager
+- certificates
 sources:
 - https://github.com/quhive/charts/tree/master/charts/cert-manager
 - https://github.com/jetstack/cert-manager

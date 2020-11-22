@@ -306,7 +306,7 @@ questions:
   label: CloudFlare API Token
   group: cert-manager / IngressShim
 - variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.key
-  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlareclusterIssuer.acme.dns01.dnsProvider.cloudflare.authType=Key"
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlare&&clusterIssuer.acme.dns01.dnsProvider.cloudflare.authType=Key"
   description: CloudFlare API Key
   type: password
   required: true

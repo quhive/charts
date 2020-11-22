@@ -27,9 +27,9 @@ spec:
           email: {{ .Values.clusterIssuer.acme.dns01.cloudflare.email }}
           apiTokenSecretRef:
             name: {{ .Values.ingressShim.defaultIssuerName }}
-            {{- if eq .Values.clusterIssuer.acme.dns01.cloudflare.apiAuthType "Key" }}
+            {{- if eq .Values.clusterIssuer.acme.dns01.cloudflare.authType "Key" }}
             key: api-key
-            {{- else if eq .Values.clusterIssuer.acme.dns01.cloudflare.apiAuthType "Token" }}
+            {{- else if eq .Values.clusterIssuer.acme.dns01.cloudflare.authType "Token" }}
             token: api-token
             {{- end }}
         {{- end }}

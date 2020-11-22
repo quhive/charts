@@ -5,9 +5,9 @@ metadata:
   name: {{ .Values.ingressShim.defaultIssuerName }}
   labels: {{ include "cert-manager.labels" . | nindent 4 }}
 spec:
-  {{- if eq .Values.provider "SelfSigned" }}
+  {{- if eq .Values.clusterIssuer.provider "SelfSigned" }}
   selfSigned: {}
-  {{- else if eq .Values.provider "ACME" }}
+  {{- else if eq .Values.clusterIssuer.provider "ACME" }}
   acme:
     email: {{ .Values.clusterIssuer.acme.email }}
     {{- if eq .Values.clusterIssuer.acme.endpoint "Production" }}

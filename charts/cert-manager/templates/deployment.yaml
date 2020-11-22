@@ -72,16 +72,10 @@ spec:
         {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
         {{- end }}
-          {{- with .Values.ingressShim }}
-          {{- if .defaultIssuerName }}
-          - --default-issuer-name={{ .defaultIssuerName }}
-          {{- end }}
-          {{- if .defaultIssuerKind }}
-          - --default-issuer-kind={{ .defaultIssuerKind }}
-          {{- end }}
-          {{- if .defaultIssuerGroup }}
-          - --default-issuer-group={{ .defaultIssuerGroup }}
-          {{- end }}
+          {{- if .Values.ingressShim.enabled -}}
+          - --default-issuer-name={{ .Values.ingressShim.defaultIssuerName }}
+          - --default-issuer-kind={{ .Values.ingressShim.defaultIssuerKind }}
+          - --default-issuer-group={{ .Values.ingressShim.defaultIssuerGroup }}
           {{- end }}
           {{- if .Values.featureGates }}
           - --feature-gates={{ .Values.featureGates }}

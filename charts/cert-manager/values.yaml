@@ -137,10 +137,26 @@ podLabels: {}
 
 nodeSelector: {}
 
-ingressShim: {}
-  # defaultIssuerName: ""
-  # defaultIssuerKind: ""
-  # defaultIssuerGroup: ""
+ingressShim:
+  enabled: false
+  defaultIssuerName: ""
+  defaultIssuerKind: "ClusterIssuer"
+  defaultIssuerGroup: "cert-manager.io"
+
+clusterIssuer:
+  type: "SelfSigned"
+  acme:
+    endpoint: "Production"
+    challengeType: "HTTP01"
+    http01:
+      ingressClass: "nginx"
+    dns01:
+      dnsProvider: "CloudFlare"
+      cloudflare:
+        email: ""
+        authType: "Token"
+        token: ""
+        key: ""
 
 prometheus:
   enabled: true

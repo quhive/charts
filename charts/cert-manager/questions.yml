@@ -208,6 +208,111 @@ questions:
   label: Enable ServiceMonitor
   group: cert-manager / Integrations
 
+- variable: ingressShim.enabled
+  default: false
+  description: Whether a default cluster issuer should be created
+  type: boolean
+  required: true
+  label: Enable default ClusterIssuer
+  group: cert-manager / IngressShim
+- variable: ingressShim.defaultIssuerName
+  show_if: "ingressShim.enabled"
+  description: The name for the cluster issuer
+  type: string
+  required: true
+  label: ClusterIssuer name
+  group: cert-manager / ClusterIssuer
+- variable: clusterIssuer.type
+  show_if: "ingressShim.enabled"
+  options:
+  - "ACME"
+  - "SelfSigned"
+  default: SelfSigned
+  description: The type of ClusterIssuer to create
+  type: enum
+  required: true
+  label: ClusterIssuer Type
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.email
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME"
+  description: Let's Encrypt will use this to contact you about expiring certificates, and issues related to your account
+  type: string
+  required: true
+  label: Let's Encrypt EMail
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.endpoint
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME"
+  options:
+  - "Production"
+  - "Staging"
+  default: Production
+  description: Which Let's Encrypt endpoint to use
+  type: enum
+  required: true
+  label: Let's Encrypt Endpoint
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.challengeType
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME"
+  options:
+  - "DNS01"
+  - "HTTP01"
+  default: HTTP01
+  description: The type of Challenge Type to use
+  type: enum
+  required: true
+  label: Challenge Type
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.http01.ingressClass
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=HTTP01"
+  default: nginx
+  description: The Ingress Class to use for the challenge
+  type: string
+  required: true
+  label: HTTP01 Ingress Class
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.dns01.dnsProvider
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01"
+  options:
+  - "CloudFlare"
+  default: CloudFlare
+  description: The DNS Provider to use for the challenge
+  type: string
+  required: true
+  label: DNS01 DNS Provider
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.email
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlare"
+  description: CloudFlare EMail
+  type: string
+  required: true
+  label: CloudFlare E-Mail
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.authType
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlare"
+  options:
+    - "Key"
+    - "Token"
+  default: "Token"
+  description: "Whether to use the API Key or Token/E-Mail for Authentication"
+  type: enum
+  required: true
+  label: CloudFlare API Auth Type
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.token
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlare&&clusterIssuer.acme.dns01.dnsProvider.cloudflare.authType=Token"
+  description: CloudFlare API Token
+  type: password
+  required: true
+  label: CloudFlare API Token
+  group: cert-manager / IngressShim
+- variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.key
+  show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlareclusterIssuer.acme.dns01.dnsProvider.cloudflare.authType=Key"
+  description: CloudFlare API Key
+  type: password
+  required: true
+  label: CloudFlare API Key
+  group: cert-manager / IngressShim
+
 - variable: replicaCount
   default: 1
   description: The amount of replicas for cert-manager

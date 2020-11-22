@@ -5,7 +5,7 @@ entries:
       catalog.cattle.io/auto-install: cert-manager-crd=match
       catalog.cattle.io/certified: quhive
       catalog.cattle.io/display-name: cert-manager
-      catalog.cattle.io/namespace: cert-manager
+      catalog.cattle.io/namespace: cert-manager-system
       catalog.cattle.io/release-name: cert-manager
     apiVersion: v2
     appVersion: v1.0.4
@@ -33,7 +33,7 @@ entries:
   - annotations:
       catalog.cattle.io/certified: quhive
       catalog.cattle.io/hidden: "true"
-      catalog.cattle.io/namespace: cert-manager
+      catalog.cattle.io/namespace: cert-manager-system
       catalog.cattle.io/release-name: cert-manager-crd
     apiVersion: v2
     appVersion: v1.0.4

@@ -35,7 +35,7 @@ image:
 ## K8s resources type to be observed for new DNS entries by ExternalDNS
 ##
 sources:
-  # - crd
+  - crd
   - service
   - ingress
   # - contour-httpproxy
@@ -426,15 +426,6 @@ podLabels: {}
 ## Pod priority class name
 ##
 priorityClassName: ""
-
-## Options for the source type "crd"
-##
-crd:
-  ## Install and use the integrated DNSEndpoint CRD
-  create: false
-  ## Change these to use an external DNSEndpoint CRD (E.g. from kubefed)
-  apiversion: ""
-  kind: ""
 
 ## Kubernetes svc configutarion
 ##

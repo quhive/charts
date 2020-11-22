@@ -58,6 +58,7 @@ entries:
     version: 1.0.4
   external-dns:
   - annotations:
+      catalog.cattle.io/auto-install: external-dns-crd=match
       catalog.cattle.io/certified: quhive
       catalog.cattle.io/display-name: ExternalDNS
       catalog.cattle.io/namespace: external-dns-system

@@ -221,7 +221,7 @@ questions:
   type: string
   required: true
   label: ClusterIssuer name
-  group: cert-manager / ClusterIssuer
+  group: cert-manager / IngressShim
 - variable: clusterIssuer.type
   show_if: "ingressShim.enabled"
   options:

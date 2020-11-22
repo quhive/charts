@@ -287,13 +287,13 @@ questions:
   required: true
   label: CloudFlare E-Mail
   group: cert-manager / IngressShim
-- variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.authType
+- variable: clusterIssuer.acme.dns01.cloudflare.authType
   show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlare"
   options:
     - "Key"
     - "Token"
   default: "Token"
-  description: "Whether to use the API Key or Token/E-Mail for Authentication"
+  description: "Which type of authentication to use"
   type: enum
   required: true
   label: CloudFlare API Auth Type

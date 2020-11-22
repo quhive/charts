@@ -33,5 +33,6 @@ spec:
             token: api-token
             {{- end }}
         {{- end }}
+    {{- end }}
   {{- end }}
 {{- end }}

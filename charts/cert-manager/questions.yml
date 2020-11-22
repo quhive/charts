@@ -280,7 +280,7 @@ questions:
   required: true
   label: DNS01 DNS Provider
   group: cert-manager / IngressShim
-- variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.email
+- variable: clusterIssuer.acme.dns01.cloudflare.email
   show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlare"
   description: CloudFlare EMail
   type: string
@@ -298,14 +298,14 @@ questions:
   required: true
   label: CloudFlare API Auth Type
   group: cert-manager / IngressShim
-- variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.token
+- variable: clusterIssuer.acme.dns01.cloudflare.token
   show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlare&&clusterIssuer.acme.dns01.cloudflare.authType=Token"
   description: CloudFlare API Token
   type: password
   required: true
   label: CloudFlare API Token
   group: cert-manager / IngressShim
-- variable: clusterIssuer.acme.dns01.dnsProvider.cloudflare.key
+- variable: clusterIssuer.acme.dns01.cloudflare.key
   show_if: "ingressShim.enabled&&clusterIssuer.type=ACME&&clusterIssuer.acme.challengeType=DNS01&&clusterIssuer.acme.dns01.dnsProvider=CloudFlare&&clusterIssuer.acme.dns01.cloudflare.authType=Key"
   description: CloudFlare API Key
   type: password

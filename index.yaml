@@ -83,6 +83,35 @@ entries:
     urls:
     - https://github.com/quhive/charts/releases/download/external-dns-0.7.4/external-dns-0.7.4.tgz
     version: 0.7.4
+  external-dns-crd:
+  - annotations:
+      catalog.cattle.io/certified: quhive
+      catalog.cattle.io/hidden: "true"
+      catalog.cattle.io/namespace: external-dns-system
+      catalog.cattle.io/release-name: external-dns-crd
+    apiVersion: v2
+    appVersion: 0.7.4
+    created: "2020-11-22T18:07:43.3099778Z"
+    description: ExternalDNS is a Kubernetes addon that configures public DNS servers with information about exposed Kubernetes services to make them discoverable.
+    digest: d688a3745af7ce27799f38aae24d2cb6db71e7eb682c8407780f7e73b969dc55
+    home: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+    icon: https://bitnami.com/assets/stacks/external-dns/img/external-dns-stack-110x117.png
+    keywords:
+    - external-dns
+    - network
+    - dns
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    - email: dev@quhive.dev
+      name: QuHive
+    name: external-dns-crd
+    sources:
+    - https://github.com/quhive/charts/tree/master/charts/external-dns
+    - https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+    urls:
+    - https://github.com/quhive/charts/releases/download/external-dns-crd-0.7.4/external-dns-crd-0.7.4.tgz
+    version: 0.7.4
   hcloud-ccm:
   - annotations:
       catalog.cattle.io/certified: quhive

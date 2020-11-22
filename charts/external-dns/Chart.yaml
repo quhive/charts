@@ -19,6 +19,7 @@ maintainers:
 icon: https://bitnami.com/assets/stacks/external-dns/img/external-dns-stack-110x117.png
 engine: gotpl
 annotations:
+  catalog.cattle.io/auto-install: external-dns-crd=match
   catalog.cattle.io/certified: quhive
   catalog.cattle.io/namespace: external-dns-system
   catalog.cattle.io/release-name: external-dns

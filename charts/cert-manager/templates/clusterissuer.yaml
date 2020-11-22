@@ -32,7 +32,7 @@ spec:
             {{- if eq .Values.clusterIssuer.acme.dns01.cloudflare.authType "Key" }}
             key: api-key
             {{- else if eq .Values.clusterIssuer.acme.dns01.cloudflare.authType "Token" }}
-            token: api-token
+            key: api-token
             {{- end }}
         {{- end }}
     {{- end }}

@@ -60,6 +60,8 @@ entries:
   - annotations:
       catalog.cattle.io/certified: quhive
       catalog.cattle.io/display-name: ExternalDNS
+      catalog.cattle.io/namespace: external-dns-system
+      catalog.cattle.io/release-name: external-dns
     apiVersion: v2
     appVersion: 0.7.4
     created: "2020-11-17T22:11:18.622906333Z"

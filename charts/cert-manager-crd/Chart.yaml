@@ -19,5 +19,5 @@ engine: gotpl
 annotations:
   catalog.cattle.io/certified: quhive
   catalog.cattle.io/hidden: "true"
-  catalog.cattle.io/namespace: cert-manager
+  catalog.cattle.io/namespace: cert-manager-system
   catalog.cattle.io/release-name: cert-manager-crd

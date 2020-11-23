@@ -21,6 +21,10 @@ rules:
   - apiGroups: [""]
     resources: ["secrets"]
     verbs: ["get", "list", "watch"]
+  # Need to be able to retrieve ACME account private key to complete challenges
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "watch"]
   # Used to create events
   - apiGroups: [""]
     resources: ["events"]

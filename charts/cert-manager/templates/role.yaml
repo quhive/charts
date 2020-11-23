@@ -9,7 +9,7 @@ rules:
   # Used for leader election by the controller
   - apiGroups: [""]
     resources: ["configmaps"]
-    resourceNames: ["cert-manager-controller"]
+    resourceNames: ["cert-manager"]
     verbs: ["get", "update", "patch"]
   - apiGroups: [""]
     resources: ["configmaps"]

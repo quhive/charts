@@ -81,11 +81,11 @@ extraEnv: []
 
 resources:
   limits:
-    cpu: 50m
-    memory: 50Mi
+    cpu: 100m
+    memory: 128Mi
   requests:
-    memory: 25Mi
-    cpu: 25m
+    cpu: 50m
+    memory: 64Mi
 
 # Pod Security Context
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -237,8 +237,8 @@ webhook:
       cpu: 100m
       memory: 128Mi
     requests:
-      memory: 32Mi
-      cpu: 25m
+      cpu: 50m
+      memory: 64Mi
 
   ## Liveness and readiness probe values
   ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
@@ -344,8 +344,8 @@ cainjector:
       cpu: 100m
       memory: 128Mi
     requests:
-      memory: 32Mi
-      cpu: 25m
+      memory: 64Mi
+      cpu: 50m
 
   nodeSelector: {}
 

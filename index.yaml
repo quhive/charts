@@ -65,6 +65,33 @@ entries:
       catalog.cattle.io/namespace: cert-manager-system
       catalog.cattle.io/release-name: cert-manager-crd
     apiVersion: v2
+    appVersion: v1.1.0
+    created: "2020-11-24T22:10:11.527291574Z"
+    description: cert-manager is a x509 certificate manager for Kubernetes.
+    digest: fb2d56dca0c4162004ea88fcea7ad9f5ec352793340453d98d2f76cc1e4d552a
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - certificates
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager-crd
+    sources:
+    - https://github.com/quhive/charts/tree/master/charts/cert-manager
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - https://github.com/quhive/charts/releases/download/cert-manager-crd-1.1.0/cert-manager-crd-1.1.0.tgz
+    version: 1.1.0
+  - annotations:
+      catalog.cattle.io/certified: quhive
+      catalog.cattle.io/hidden: "true"
+      catalog.cattle.io/namespace: cert-manager-system
+      catalog.cattle.io/release-name: cert-manager-crd
+    apiVersion: v2
     appVersion: v1.0.4
     created: "2020-11-19T23:51:09.018405845Z"
     description: cert-manager is a x509 certificate manager for Kubernetes.

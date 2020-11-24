@@ -38,8 +38,8 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/component: "cert-manager"
 helm.sh/chart: {{ template "cert-manager.chart" . }}
-{{- if .Values.podLabels }}
-{{ toYaml .Values.podLabels }}
+{{- if .Values.webhook.podLabels }}
+{{ toYaml .Values.webhook.podLabels }}
 {{- end }}
 {{- end -}}
 

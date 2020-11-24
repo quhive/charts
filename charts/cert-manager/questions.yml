@@ -22,7 +22,7 @@ questions:
     type: string
     label: cainjector image name
   - variable: cainjector.image.tag
-    default: v1.0.4
+    default: v1.1.0
     description: cainjector image tag
     type: string
     label: cainjector Image Tag
@@ -90,7 +90,7 @@ questions:
     type: string
     label: webhook image name
   - variable: webhook.image.tag
-    default: v1.0.4
+    default: v1.1.0
     description: webhook image tag
     type: string
     label: webhook Image Tag
@@ -158,7 +158,7 @@ questions:
     type: string
     label: cert-manager image name
   - variable: image.tag
-    default: v1.0.4
+    default: v1.1.0
     description: cert-manager image tag
     type: string
     label: cert-manager Image Tag

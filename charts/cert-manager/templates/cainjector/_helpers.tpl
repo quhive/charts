@@ -34,8 +34,8 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/component: "cainjector"
 helm.sh/chart: {{ template "cainjector.chart" . }}
-{{- if .Values.podLabels }}
-{{ toYaml .Values.podLabels }}
+{{- if .Values.cainjector.podLabels }}
+{{ toYaml .Values.cainjector.podLabels }}
 {{- end }}
 {{- end -}}
 

@@ -1,7 +1,7 @@
 apiVersion: v2
 name: external-dns-crd
-version: 0.7.4
-appVersion: 0.7.4
+version: 0.7.5
+appVersion: v0.7.5
 description: ExternalDNS is a Kubernetes addon that configures public DNS servers with information about exposed Kubernetes services to make them discoverable.
 home: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
 keywords:

@@ -12,17 +12,17 @@ questions:
   show_subquestion_if: false
   subquestions:
   - variable: image.registry
-    default: docker.io
+    default: k8s.gcr.io
     description: ExternalDNS Image Registry
     type: string
     label: ExternalDNS image name
   - variable: image.repository
-    default: bitnami/external-dns
+    default: external-dns/external-dns
     description: ExternalDNS Image Repository
     type: string
     label: ExternalDNS image name
   - variable: image.tag
-    default: 0.7.4-debian-10-r41
+    default: 0.7.5
     description: ExternalDNS image tag
     type: string
     label: ExternalDNS Image Tag

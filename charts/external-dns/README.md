@@ -5,15 +5,13 @@
 ## TL;DR
 
 ```console
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
-$ helm install my-release bitnami/external-dns
+$ helm repo add quhive https://quhive.github.io/charts
+$ helm install external-dns quhive/external-dns
 ```
 
 ## Introduction
 
-This chart bootstraps a [ExternalDNS](https://github.com/bitnami/bitnami-docker-external-dns) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
-
-Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters. This chart has been tested to work with NGINX Ingress, cert-manager, fluentd and Prometheus on top of the [BKPR](https://kubeprod.io/).
+This chart bootstraps a [ExternalDNS](https://github.com/kubernetes-sigs/external-dns) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
@@ -22,10 +20,10 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 
 ## Installing the Chart
 
-To install the chart with the release name `my-release`:
+To install the chart with the release name `external-dns`:
 
 ```bash
-$ helm install my-release bitnami/external-dns
+$ helm install external-dns quhive/external-dns
 ```
 
 The command deploys ExternalDNS on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -34,10 +32,10 @@ The command deploys ExternalDNS on the Kubernetes cluster in the default configu
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `my-release` deployment:
+To uninstall/delete the `external-dns` deployment:
 
 ```console
-$ helm delete my-release
+$ helm delete external-dns
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -52,7 +50,7 @@ The following table lists the configurable parameters of the external-dns chart 
 | `global.imageRegistry`                 | Global Docker image registry                                                                                                                                                                                    | `nil`                                                   |
 | `global.imagePullSecrets`              | Global Docker registry secret names as an array                                                                                                                                                                 | `[]` (does not add image pull secrets to deployed pods) |
 | `image.registry`                       | ExternalDNS image registry                                                                                                                                                                                      | `docker.io`                                             |
-| `image.repository`                     | ExternalDNS Image name                                                                                                                                                                                          | `bitnami/external-dns`                                  |
+| `image.repository`                     | ExternalDNS Image name                                                                                                                                                                                          | `externa-dns/external-dns`                                  |
 | `image.tag`                            | ExternalDNS Image tag                                                                                                                                                                                           | `{TAG_NAME}`                                            |
 | `image.pullPolicy`                     | ExternalDNS image pull policy                                                                                                                                                                                   | `IfNotPresent`                                          |
 | `image.pullSecrets`                    | Specify docker-registry secret names as an array                                                                                                                                                                | `[]` (does not add image pull secrets to deployed pods) |
@@ -210,14 +208,14 @@ The following table lists the configurable parameters of the external-dns chart 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install my-release \
-  --set provider=aws bitnami/external-dns
+$ helm install external-dns \
+  --set provider=aws quhive/external-dns
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install my-release -f values.yaml bitnami/external-dns
+$ helm install external-dns -f values.yaml quhive/external-dns
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -227,8 +225,6 @@ $ helm install my-release -f values.yaml bitnami/external-dns
 ### [Rolling VS Immutable tags](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/)
 
 It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.
-
-Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.
 
 ### Production configuration
 
@@ -261,65 +257,10 @@ For instance, to install ExternalDNS on AWS, you need to:
 > Note: replace the placeholder HOSTED_ZONE_IDENTIFIER and HOSTED_ZONE_NAME, with your hosted zoned identifier and name, respectively.
 
 ```bash
-$ helm install my-release \
+$ helm install external-dns \
   --set provider=aws \
   --set aws.zoneType=public \
   --set txtOwnerId=HOSTED_ZONE_IDENTIFIER \
   --set domainFilters[0]=HOSTED_ZONE_NAME \
-  bitnami/external-dns
+  quhive/external-dns
 ```
-
-## Troubleshooting
-
-Find more information about how to deal with common errors related to Bitnami’s Helm charts in [this troubleshooting guide](https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues).
-
-## Upgrading
-
-### To 4.0.0
-
-[On November 13, 2020, Helm v2 support was formally finished](https://github.com/helm/charts#status-of-the-project), this major version is the result of the required changes applied to the Helm Chart to be able to incorporate the different features added in Helm v3 and to be consistent with the Helm project itself regarding the Helm v2 EOL.
-
-**What changes were introduced in this major version?**
-
-- Previous versions of this Helm Chart use `apiVersion: v1` (installable by both Helm 2 and 3), this Helm Chart was updated to `apiVersion: v2` (installable by Helm 3 only). [Here](https://helm.sh/docs/topics/charts/#the-apiversion-field) you can find more information about the `apiVersion` field.
-- The different fields present in the *Chart.yaml* file has been ordered alphabetically in a homogeneous way for all the Bitnami Helm Charts
-
-**Considerations when upgrading to this version**
-
-- If you want to upgrade to this version from a previous one installed with Helm v3, you shouldn't face any issues
-- If you want to upgrade to this version using Helm v2, this scenario is not supported as this version doesn't support Helm v2 anymore
-- If you installed the previous version with Helm v2 and wants to upgrade to this version with Helm v3, please refer to the [official Helm documentation](https://helm.sh/docs/topics/v2_v3_migration/#migration-use-cases) about migrating from Helm v2 to v3
-
-**Useful links**
-
-- https://docs.bitnami.com/tutorials/resolve-helm2-helm3-post-migration-issues/
-- https://helm.sh/docs/topics/v2_v3_migration/
-- https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/
-
-### To 3.0.0
-
-- The parameters below are renamed:
-  - `rbac.serviceAccountCreate` -> `serviceAccount.create`
-  - `rbac.serviceAccountName` -> `serviceAccount.name`
-  - `rbac.serviceAccountAnnotations` -> `serviceAccount.annotations`
-- It is now possible to create serviceAccount, clusterRole and clusterRoleBinding manually and give the serviceAccount to the chart.
-
-### To 2.0.0
-
-Backwards compatibility is not guaranteed unless you modify the labels used on the chart's deployments.
-Use the workaround below to upgrade from versions previous to 1.0.0. The following example assumes that the release name is `my-release`:
-
-```console
-$ kubectl delete deployment my-release-external-dns
-$ helm upgrade my-release bitnami/external-dns
-```
-
-Other mayor changes included in this major version are:
-
-- Default image changes from `registry.opensource.zalan.do/teapot/external-dns` to `bitnami/external-dns`.
-- The parameters below are renamed:
-  - `aws.secretKey` -> `aws.credentials.secretKey`
-  - `aws.accessKey` -> `aws.credentials.accessKey`
-  - `aws.credentialsPath` -> `aws.credentials.mountPath`
-  - `designate.customCA.directory` -> `designate.customCA.mountPath`
-- Support to Prometheus metrics is added.

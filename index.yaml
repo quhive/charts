@@ -120,7 +120,7 @@ entries:
       catalog.cattle.io/namespace: external-dns-system
       catalog.cattle.io/release-name: external-dns
     apiVersion: v2
-    appVersion: v0.7.5
+    appVersion: 0.7.5
     created: "2020-12-12T15:32:09.74386798Z"
     description: ExternalDNS is a Kubernetes addon that configures public DNS servers with information about exposed Kubernetes services to make them discoverable.
     digest: 1abed88dcb7e6e1c0a95c89f361ea333abf73d37589593fd0da3839d674e631b
@@ -175,7 +175,7 @@ entries:
       catalog.cattle.io/namespace: external-dns-system
       catalog.cattle.io/release-name: external-dns-crd
     apiVersion: v2
-    appVersion: v0.7.5
+    appVersion: 0.7.5
     created: "2020-12-12T15:37:48.877997476Z"
     description: ExternalDNS is a Kubernetes addon that configures public DNS servers with information about exposed Kubernetes services to make them discoverable.
     digest: 98c2b086a23e25a5b06b96dde9cd2cab2d841aa2519da36b0e403e0d697db5aa

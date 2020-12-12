@@ -120,6 +120,32 @@ entries:
       catalog.cattle.io/namespace: external-dns-system
       catalog.cattle.io/release-name: external-dns
     apiVersion: v2
+    appVersion: v0.7.5
+    created: "2020-12-12T15:32:09.74386798Z"
+    description: ExternalDNS is a Kubernetes addon that configures public DNS servers with information about exposed Kubernetes services to make them discoverable.
+    digest: 1abed88dcb7e6e1c0a95c89f361ea333abf73d37589593fd0da3839d674e631b
+    home: https://github.com/kubernetes-sigs/external-dns/
+    icon: https://github.com/kubernetes-sigs/external-dns/raw/master/img/external-dns.png
+    keywords:
+    - external-dns
+    - network
+    - dns
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: external-dns
+    sources:
+    - https://github.com/quhive/charts/tree/master/charts/external-dns
+    urls:
+    - https://github.com/quhive/charts/releases/download/external-dns-0.7.5/external-dns-0.7.5.tgz
+    version: 0.7.5
+  - annotations:
+      catalog.cattle.io/auto-install: external-dns-crd=match
+      catalog.cattle.io/certified: quhive
+      catalog.cattle.io/display-name: ExternalDNS
+      catalog.cattle.io/namespace: external-dns-system
+      catalog.cattle.io/release-name: external-dns
+    apiVersion: v2
     appVersion: 0.7.4
     created: "2020-11-17T22:11:18.622906333Z"
     description: ExternalDNS is a Kubernetes addon that configures public DNS servers with information about exposed Kubernetes services to make them discoverable.

@@ -17,11 +17,8 @@ You can then run `helm search repo quhive` to see the charts.
 
 ## Charts
 
-* [cert-manager](https://github.com/quhive/charts/tree/master/charts/cert-manager)
-* [external-dns](https://github.com/quhive/charts/tree/master/charts/external-dns)
 * [hcloud-ccm](https://github.com/quhive/charts/tree/master/charts/hcloud-ccm)
 * [hcloud-csi](https://github.com/quhive/charts/tree/master/charts/hcloud-csi)
-* [system-upgrade-controller](https://github.com/quhive/charts/tree/master/charts/system-upgrade-controller)
 
 ```bash
 helm install --name your-release quhive/external-dns

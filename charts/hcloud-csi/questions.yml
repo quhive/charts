@@ -9,7 +9,7 @@ questions:
   label: HCloud API Token
   group: General
 
-- variable: storageClass.default
+- variable: storageClass.name
   default: hcloud-csi
   description: The name of the StorageClass
   type: string

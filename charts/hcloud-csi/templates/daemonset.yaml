@@ -1,3 +1,4 @@
+---
 kind: DaemonSet
 apiVersion: apps/v1
 metadata:
@@ -10,7 +11,6 @@ spec:
     metadata:
       labels: {{ include "hcloud-csi.labelsNode" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ template "hcloud-csi.fullname" . }}
       tolerations:
         - effect: NoExecute
           operator: Exists
@@ -51,6 +51,11 @@ spec:
                 secretKeyRef:
                   name: {{ template "hcloud-csi.fullname" . }}
                   key: hcloud-token
+            - name: KUBE_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: spec.nodeName
           volumeMounts:
             - name: kubelet-dir
               mountPath: /var/lib/kubelet

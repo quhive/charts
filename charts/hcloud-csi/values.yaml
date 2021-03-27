@@ -33,7 +33,9 @@ image:
 # fullnameOverride:
 
 hcloudToken:
-defaultStorageClass: false
+storageClass:
+  default: false
+  name: "hcloud-csi"
 
 ## Prometheus Exporter / Metrics
 ##

@@ -7,15 +7,22 @@ questions:
   type: password
   required: true
   label: HCloud API Token
-  group: HCloud-CSI / General
+  group: General
 
-- variable: defaultStorageClass
+- variable: storageClass.default
+  default: hcloud-csi
+  description: The name of the StorageClass
+  type: string
+  required: true
+  label: StorageClass name
+  group: StorageClass
+- variable: storageClass.default
   default: false
-  description: Make the hcloud-csi StorageClass the default
+  description: Make the StorageClass the default
   type: boolean
   required: true
   label: Default StorageClass
-  group: HCloud-CSI / StorageClass
+  group: StorageClass
 
 - variable: metrics.enabled
   default: false
@@ -23,7 +30,7 @@ questions:
   type: boolean
   required: true
   label: Enable Metrics
-  group: HCloud-CSI / Integrations
+  group: Metrics
 - variable: metrics.serviceMonitor.enabled
   show_if: "metrics.enabled"
   default: false
@@ -31,28 +38,28 @@ questions:
   type: boolean
   required: true
   label: Enable ServiceMonitor
-  group: HCloud-CSI / Integrations
+  group: Metrics
 
 - variable: defaultImage
   default: true
   description: Use default Docker image
   type: boolean
   label: Use Default Image
-  group: HCloud-CSI / Docker Images
+  group: Docker Images
   show_subquestion_if: false
   subquestions:
   - variable: image.registry
     default: docker.io
-    description: HCloud-CSI Image Registry
+    description: Image registry
     type: string
-    label: HCloud-CSI image name
+    label: Image registry
   - variable: image.repository
     default: hetznercloud/hcloud-csi-driver
-    description: HCloud-CSI Image Repository
+    description: Image repository
     type: string
-    label: HCloud-CSI image name
+    label: Image repository
   - variable: image.tag
     default: 1.5.3
-    description: HCloud-CSI image tag
+    description: Image tag
     type: string
-    label: HCloud-CSI Image Tag
+    label: Image tag

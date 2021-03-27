@@ -1,8 +1,8 @@
 apiVersion: v2
 name: hcloud-csi
-version: 1.5.1
-appVersion: 1.5.1
-kubeVersion: ">=v1.17.0"
+version: 1.5.3
+appVersion: 1.5.3
+kubeVersion: ">=v1.19.0"
 description: Kubernetes Container Storage Interface driver for Hetzner Cloud Volumes
 home: https://github.com/hetznercloud/csi-driver
 keywords:

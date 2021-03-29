@@ -14,6 +14,16 @@ spec:
       labels: {{ include "hcloud-csi.labelsController" . | nindent 8 }}
     spec:
       serviceAccount: {{ template "hcloud-csi.fullname" . }}
+      tolerations:
+        - effect: NoExecute
+          operator: Exists
+        - effect: NoSchedule
+          operator: Exists
+        - key: CriticalAddonsOnly
+          operator: Exists
+      {{- with .Values.priorityClassName }}
+      priorityClassName: {{ . }}
+      {{- end }}
       containers:
         - name: csi-attacher
           image: quay.io/k8scsi/csi-attacher:v2.2.0
@@ -62,8 +72,10 @@ spec:
           env:
             - name: CSI_ENDPOINT
               value: unix:///var/lib/csi/sockets/pluginproxy/csi.sock
+            {{- if .Values.metrics.enabled }}
             - name: METRICS_ENDPOINT
               value: 0.0.0.0:9189
+            {{- end }}
             - name: KUBE_NODE_NAME
               valueFrom:
                 fieldRef:

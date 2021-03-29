@@ -25,6 +25,7 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
+  pullSecrets: []
 
 ## String to partially override hcloud-csi.fullname template (will maintain the release name)
 # nameOverride:
@@ -37,36 +38,58 @@ storageClass:
   default: false
   name: "hcloud-csi"
 
+## Allow the customization of the kubelet path for non standart kubernetes distros like microk8s and k0s
+##
+kubeletPath: "/var/lib/kubelet"
+
+## priorityClassName
+## ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
+##
+priorityClassName: "system-cluster-critical"
+
 ## Prometheus Exporter / Metrics
 ##
 metrics:
   enabled: false
-  ## Metrics exporter pod Annotation and Labels
-  ##
-  # podAnnotations:
-  #   prometheus.io/scrape: "true"
-  #   prometheus.io/port: "7979"
 
-  ## Prometheus Operator ServiceMonitor configuration
+  ## Prometheus exporter service parameters
+  ##
+  service:
+    ## Prometheus exporter service type
+    ##
+    type: ClusterIP
+    ## Prometheus exporter port
+    ##
+    port: 9189
+    ## Annotations for the Prometheus exporter service
+    ##
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "{{ .Values.metrics.service.port }}"
+
+   ## Prometheus Operator ServiceMonitor configuration
   ##
   serviceMonitor:
     enabled: false
     ## Namespace in which Prometheus is running
     ##
     # namespace: monitoring
-
     ## Interval at which metrics should be scraped.
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
     ##
-    # interval: 10s
-
+    interval: 60s
     ## Timeout after which the scrape is ended
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
     ##
     # scrapeTimeout: 10s
-
     ## ServiceMonitor selector labels
     ## ref: https://github.com/bitnami/charts/tree/master/bitnami/prometheus-operator#prometheus-configuration
     ##
     # selector:
     #   prometheus: my-prometheus
+  
+  prometheusRule:
+    enabled: false
+    additionalLabels: {}
+    namespace: ''
+    rules: []

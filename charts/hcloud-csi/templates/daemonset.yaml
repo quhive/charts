@@ -18,13 +18,16 @@ spec:
           operator: Exists
         - key: CriticalAddonsOnly
           operator: Exists
+      {{- with .Values.priorityClassName }}
+      priorityClassName: {{ . }}
+      {{- end }}
       containers:
         - name: csi-node-driver-registrar
           image: quay.io/k8scsi/csi-node-driver-registrar:v1.3.0
           args:
             - --v=5
             - --csi-address=/csi/csi.sock
-            - --kubelet-registration-path=/var/lib/kubelet/plugins/csi.hetzner.cloud/csi.sock
+            - --kubelet-registration-path={{ .Values.kubeletPath }}/plugins/csi.hetzner.cloud/csi.sock
           env:
             - name: KUBE_NODE_NAME
               valueFrom:
@@ -44,8 +47,10 @@ spec:
           env:
             - name: CSI_ENDPOINT
               value: unix:///csi/csi.sock
+            {{- if .Values.metrics.enabled }}
             - name: METRICS_ENDPOINT
               value: 0.0.0.0:9189
+            {{- end }}
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -58,7 +63,7 @@ spec:
                   fieldPath: spec.nodeName
           volumeMounts:
             - name: kubelet-dir
-              mountPath: /var/lib/kubelet
+              mountPath: {{ .Values.kubeletPath }}
               mountPropagation: "Bidirectional"
             - name: plugin-dir
               mountPath: /csi
@@ -91,15 +96,15 @@ spec:
       volumes:
         - name: kubelet-dir
           hostPath:
-            path: /var/lib/kubelet
+            path: {{ .Values.kubeletPath }}
             type: Directory
         - name: plugin-dir
           hostPath:
-            path: /var/lib/kubelet/plugins/csi.hetzner.cloud/
+            path: {{ .Values.kubeletPath }}/plugins/csi.hetzner.cloud/
             type: DirectoryOrCreate
         - name: registration-dir
           hostPath:
-            path: /var/lib/kubelet/plugins_registry/
+            path: {{ .Values.kubeletPath }}/plugins_registry/
             type: Directory
         - name: device-dir
           hostPath:

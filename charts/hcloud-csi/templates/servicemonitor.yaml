@@ -2,7 +2,34 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ template "hcloud-csi.fullname" . }}
+  name: "{{ template "hcloud-csi.fullname" . }}-controller-metrics"
+  {{- with .Values.metrics.serviceMonitor.namespace }}
+  namespace: {{ . }}
+  {{- end }}
+  labels: {{ include "hcloud-csi.labelsController" . | nindent 4 }}
+    {{- with .Values.metrics.serviceMonitor.selector }}
+    {{ toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  endpoints:
+    - port: metrics
+      path: /metrics
+      {{- with .Values.metrics.serviceMonitor.interval }}
+      interval: {{ . }}
+      {{- end }}
+      {{- with .Values.metrics.serviceMonitor.scrapeTimeout }}
+      scrapeTimeout: {{ . }}
+      {{- end }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels: {{ include "hcloud-csi.matchLabelsController" . | nindent 4 }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: "{{ template "hcloud-csi.fullname" . }}-node-metrics"
   {{- with .Values.metrics.serviceMonitor.namespace }}
   namespace: {{ . }}
   {{- end }}
@@ -24,5 +51,5 @@ spec:
     matchNames:
       - {{ .Release.Namespace }}
   selector:
-    matchLabels: {{ include "hcloud-csi.matchLabels" . | nindent 6 }}
+    matchLabels: {{ include "hcloud-csi.matchLabels" . | nindent 4 }}
 {{- end }}

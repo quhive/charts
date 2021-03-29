@@ -5,7 +5,9 @@ kind: Service
 metadata:
   name: "{{ template "hcloud-csi.fullname" . }}-controller-metrics"
   labels: {{ include "hcloud-csi.labelsController" . | nindent 4 }}
-  annotations: {{ .Values.metrics.service.annotations | nindent 4 }}
+  {{- with .Values.metrics.service.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   selector: {{ include "hcloud-csi.matchLabelsController" . | nindent 4 }}
   ports:
@@ -19,7 +21,9 @@ kind: Service
 metadata:
   name: "{{ template "hcloud-csi.fullname" . }}-node-metrics"
   labels: {{ include "hcloud-csi.labels" . | nindent 4 }}
-  annotations: {{ .Values.metrics.service.annotations | nindent 4 }}
+  {{- with .Values.metrics.service.annotations }}
+  annotations: {{ toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   selector: {{ include "hcloud-csi.matchLabels" . | nindent 4 }}
   ports:

@@ -38,14 +38,14 @@ storageClass:
   default: false
   name: "hcloud-csi"
 
-## Allow the customization of the kubelet path for non standart kubernetes distros like microk8s and k0s
-##
-kubeletPath: "/var/lib/kubelet"
-
 ## priorityClassName
 ## ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
 ##
 priorityClassName: "system-cluster-critical"
+
+## Allow the customization of the kubelet path for non standart kubernetes distros like microk8s and k0s
+##
+kubeletPath: "/var/lib/kubelet"
 
 ## Prometheus Exporter / Metrics
 ##

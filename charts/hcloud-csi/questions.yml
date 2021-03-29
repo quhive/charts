@@ -24,6 +24,21 @@ questions:
   label: Default StorageClass
   group: StorageClass
 
+- variable: priorityClassName
+  default: system-cluster-critical
+  description: PriorityClass name
+  type: string
+  required: true
+  label: PriorityClass name
+  group: Advanced
+- variable: kubeletPath
+  default: /var/lib/kubelet
+  description: Allow the customization of the kubelet path for non standart kubernetes distros like microk8s and k0s
+  type: string
+  required: true
+  label: Kubelet path
+  group: Advanced
+
 - variable: metrics.enabled
   default: false
   description: Enable metrics

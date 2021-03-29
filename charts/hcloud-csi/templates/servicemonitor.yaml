@@ -24,7 +24,7 @@ spec:
     matchNames:
       - {{ .Release.Namespace }}
   selector:
-    matchLabels: {{ include "hcloud-csi.matchLabelsController" . | nindent 4 }}
+    matchLabels: {{ include "hcloud-csi.matchLabelsController" . | nindent 6 }}
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -51,5 +51,5 @@ spec:
     matchNames:
       - {{ .Release.Namespace }}
   selector:
-    matchLabels: {{ include "hcloud-csi.matchLabels" . | nindent 4 }}
+    matchLabels: {{ include "hcloud-csi.matchLabels" . | nindent 6 }}
 {{- end }}

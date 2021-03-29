@@ -53,4 +53,29 @@ entries:
     urls:
     - https://github.com/quhive/charts/releases/download/hcloud-csi-1.5.3/hcloud-csi-1.5.3.tgz
     version: 1.5.3
+  - annotations:
+      catalog.cattle.io/certified: quhive
+      catalog.cattle.io/display-name: HCloud CSI
+      catalog.cattle.io/namespace: kube-system
+      catalog.cattle.io/release-name: hcloud-csi
+    apiVersion: v2
+    appVersion: 1.5.1
+    created: "2020-11-18T16:26:00.857723445Z"
+    description: Kubernetes Container Storage Interface driver for Hetzner Cloud Volumes
+    digest: efceea22fa7700587070ba738c38950b2b076fe37aa408bbfaa467e4b873acf3
+    home: https://github.com/hetznercloud/csi-driver
+    icon: https://avatars2.githubusercontent.com/u/22154697?s=200&v=4
+    keywords:
+    - csi-driver
+    - hcloud
+    kubeVersion: '>=v1.17.0'
+    maintainers:
+    - email: dev@quhive.dev
+      name: QuHive
+    name: hcloud-csi
+    sources:
+    - https://github.com/hetznercloud/csi-driver
+    urls:
+    - https://github.com/quhive/charts/releases/download/hcloud-csi-1.5.1/hcloud-csi-1.5.1.tgz
+    version: 1.5.1
 generated: "0001-01-01T00:00:00Z"

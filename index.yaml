@@ -1,0 +1,58 @@
+apiVersion: v1
+entries:
+  hcloud-ccm:
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      category: Infrastructure
+    apiVersion: v2
+    appVersion: v1.13.0
+    created: "2022-09-15T10:16:40.880851222Z"
+    description: Kubernetes cloud-controller-manager for Hetzner Cloud
+    digest: 41f30ec3463dd166e852dc568b3693585fb04607240a33b6d23feddb274ac2c8
+    home: https://quhive.cloud/
+    icon: https://avatars.githubusercontent.com/u/22154697?s=200&v=4
+    keywords:
+    - hetzner
+    - hetzner-cloud
+    - hcloud
+    - hcloud-cloud-controller
+    - hcloud-cloud-controller-manager
+    - cloud-controller
+    - cloud-controller-manager
+    maintainers:
+    - email: 0SkillAllLuck@pm.me
+      name: 0SkillAllLuck
+    name: hcloud-ccm
+    sources:
+    - https://github.com/quhive/charts
+    - https://github.com/hetznercloud/hcloud-cloud-controller-manager
+    urls:
+    - https://github.com/quhive/charts/releases/download/hcloud-ccm-v1.13.000/hcloud-ccm-v1.13.000.tgz
+    version: v1.13.000
+  hcloud-csi:
+  - annotations:
+      category: Infrastructure
+    apiVersion: v2
+    appVersion: v1.6.0
+    created: "2022-09-15T10:16:41.010484273Z"
+    description: Kubernetes Container Storage Interface driver for Hetzner Cloud Volumes
+    digest: d8639b0fc388ca3c6d240d8aaceccfd8c7bb24a65dccb983f44f607513f20b04
+    home: https://quhive.cloud/
+    icon: https://avatars.githubusercontent.com/u/22154697?s=200&v=4
+    keywords:
+    - hetzner
+    - hetzner-cloud
+    - hcloud
+    - hcloud-container-storage-interface
+    - container-storage-interface
+    maintainers:
+    - email: 0SkillAllLuck@pm.me
+      name: 0SkillAllLuck
+    name: hcloud-csi
+    sources:
+    - https://github.com/quhive/charts
+    - https://github.com/hetznercloud/csi-driver
+    urls:
+    - https://github.com/quhive/charts/releases/download/hcloud-csi-v1.6.000/hcloud-csi-v1.6.000.tgz
+    version: v1.6.000
+generated: "2022-09-15T10:16:40.72780961Z"

@@ -1,0 +1,64 @@
+## Docker Image Configuration
+image:
+  registry: docker.io
+  repository: hetznercloud/hcloud-cloud-controller-manager
+  tag: v1.13.0
+  ## Specify a imagePullPolicy
+  ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ##
+  pullPolicy: IfNotPresent
+  ## Optionally specify an array of imagePullSecrets
+  ## Secrets must be manually created in the namespace
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  ##
+  # pullSecrets:
+  #   - myRegistryKeySecretName
+
+## HCloud Configuration
+hcloud:
+  ## HCloud API token
+  token: 
+
+  ## Set address familiy to be managed
+  ## Allowed values: ipv4, ipv6, dualstack
+  addressFamily: ipv4
+
+  ## HCloud Network Configuration
+  networks:
+    ## Enable HCloud network support
+    enabled: false
+
+    ## Name or ID of the HCloud network
+    id: network-1
+
+    ## Subnet of the HCloud network
+    subnet: 10.244.0.0/16
+
+    ## Disable check if node is attached to network
+    disableAttachedCheck: false
+
+  ## HCloud Loadbalancer Configuration
+  loadBalancers:
+    ## Enable HCloud Loadbalancer support
+    enabled: false
+
+    ## Defaults for HCloud Loadbalancer
+    defaults: {}
+      ## Default load balancer instance location (will overwrite networkZone default)
+      # location:
+
+      ## Default load balancer instance network zone (ignored when default location is set)
+      # networkZone:
+
+      ## Use private IP to upstream servers
+      # usePrivateIp:
+
+      ## Disable private ingress
+      # disablePrivateIngress:
+
+      ## Disable IPv6 support
+      # disableIPv6:
+
+  ## Enable debugging
+  debug: false

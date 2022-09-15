@@ -1,0 +1,139 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "https://raw.githubusercontent.com/quhive/charts/main/charts/hcloud-ccm/values.schema.json",
+    "title": "Values",
+    "type": "object",
+    "properties": {
+        "image": {
+            "type": "object",
+            "description": "Docker Image configuration",
+            "properties": {
+                "registry": {
+                    "type": "string",
+                    "description": "Docker Image registry"
+                },
+                "repository": {
+                    "type": "string",
+                    "description": "Docker Image repository"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Docker Image tag"
+                },
+                "pullPolicy": {
+                    "type": "string",
+                    "description": "Docker Pull Policy"
+                },
+                "pullSecrets": {
+                    "type": "string",
+                    "description": "Docker Pull Secrets"
+                }
+            },
+            "required": [
+                "registry",
+                "repository",
+                "tag",
+                "pullPolicy"
+            ]
+        },
+        "hcloud": {
+            "type": "object",
+            "description": "HCloud Configuration",
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "HCloud API token"
+                },
+                "addressFamily": {
+                    "type": "string",
+                    "description": "Set address familiy to be managed"
+                },
+                "networks": {
+                    "type": "object",
+                    "description": "HCloud network Configuration",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Enable HCloud network support"
+                        },
+                        "id": {
+                            "type": "string",
+                            "description": "Name or ID of the HCloud network"
+                        },
+                        "subnet": {
+                            "type": "string",
+                            "description": "10.244.0.0/16"
+                        },
+                        "disableAttachedCheck": {
+                            "type": "boolean",
+                            "description": "Disable check if node is attached to network"
+                        }
+                    },
+                    "required": [
+                        "enabled",
+                        "id",
+                        "subnet",
+                        "disableAttachedCheck"
+                    ]
+                },
+                "loadBalancers": {
+                    "type": "object",
+                    "description": "HCloud Loadbalancer Configuration",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Enable HCloud Loadbalancer support"
+                        },
+                        "defaults": {
+                            "type": "object",
+                            "description": "Defaults for HCloud Loadbalancer",
+                            "properties": {
+                                "location": {
+                                    "description": "Default load balancer instance location (will overwrite networkZone default)",
+                                    "type": "string"
+                                },
+                                "networkZone": {
+                                    "description": "Default load balancer instance network zone (ignored when default location is set)",
+                                    "type": "string"
+                                },
+                                "usePrivateIp": {
+                                    "description": "Use private IP to upstream servers",
+                                    "type": "boolean"
+                                },
+                                "disablePrivateIngress": {
+                                    "description": "Disable private ingress",
+                                    "type": "boolean"
+                                },
+                                "disableIPv6": {
+                                    "description": "Disable IPv6 support",
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": []
+                        }
+                    },
+                    "required": [
+                        "enabled",
+                        "defaults"
+                    ]
+                },
+                "debug": {
+                    "description": "Enable debugging",
+                    "type": "boolean"
+                }
+
+            },
+            "required": [
+                "token",
+                "addressFamily",
+                "networks",
+                "loadBalancers",
+                "debug"
+            ]
+        }
+    },
+    "required": [
+        "image",
+        "hcloud"
+    ]
+}

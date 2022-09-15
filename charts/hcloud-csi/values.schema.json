@@ -1,0 +1,118 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "https://raw.githubusercontent.com/quhive/charts/main/charts/hcloud-csi/values.schema.json",
+    "title": "Values",
+    "type": "object",
+    "properties": {
+        "image": {
+            "type": "object",
+            "description": "Docker Image configuration",
+            "properties": {
+                "registry": {
+                    "type": "string",
+                    "description": "Docker Image registry"
+                },
+                "repository": {
+                    "type": "string",
+                    "description": "Docker Image repository"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Docker Image tag"
+                },
+                "pullPolicy": {
+                    "type": "string",
+                    "description": "Docker Pull Policy"
+                },
+                "pullSecrets": {
+                    "type": "string",
+                    "description": "Docker Pull Secrets"
+                }
+            },
+            "required": [
+                "registry",
+                "repository",
+                "tag",
+                "pullPolicy"
+            ]
+        },
+        "hcloud": {
+            "type": "object",
+            "description": "HCloud Configuration",
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "HCloud API token"
+                },
+                "node": {
+                    "type": "object",
+                    "description": "Configuration for the HCloud CSI node",
+                    "properties": {
+                        "kubeletPath": {
+                            "type": "string",
+                            "description": "Path of the hosts kubelet folder"
+                        }
+                    },
+                    "required": [
+                        "kubeletPath"
+                    ]
+                },
+                "controller": {
+                    "type": "object",
+                    "description": "Configuration for the HCloud CSI controller",
+                    "properties": {
+                        "replicas": {
+                            "type": "integer",
+                            "description": "Replica count for the HCloud CSI controller"
+                        }
+                    },
+                    "required": [
+                        "replicas"
+                    ]
+                },
+                "storageClass": {
+                    "type": "object",
+                    "description": "Configuration for the HCloud CSI storageClass",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Enable the HCloud CSI storageClass"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of the HCloud CSI storageClass"
+                        },
+                        "default": {
+                            "type": "boolean",
+                            "description": "Wheather to make the HCloud CSI storageclass the default storageclass"
+                        },
+                        "reclaimPolicy": {
+                            "type": "string",
+                            "description": "HCloud CSI storageclass reclaim policy"
+                        }
+                    },
+                    "required": [
+                        "enabled",
+                        "name",
+                        "default",
+                        "reclaimPolicy"
+                    ]
+                },
+                "debug": {
+                    "description": "Enable debugging",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "token",
+                "node",
+                "controller",
+                "storageClass"
+            ]
+        }
+    },
+    "required": [
+        "image",
+        "hcloud"
+    ]
+}

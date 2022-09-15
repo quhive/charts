@@ -1,0 +1,48 @@
+## Docker Image Configuration
+image:
+  registry: docker.io
+  repository: hetznercloud/hcloud-csi-driver
+  tag: v1.6.0
+  ## Specify a imagePullPolicy
+  ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ##
+  pullPolicy: IfNotPresent
+  ## Optionally specify an array of imagePullSecrets
+  ## Secrets must be manually created in the namespace
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  ##
+  # pullSecrets:
+  #   - myRegistryKeySecretName
+
+## HCloud Configuration
+hcloud:
+  ## HCloud API token
+  token: 
+
+  ## Configuration for the HCloud CSI node
+  node:
+    ## Path of the hosts kubelet folder
+    kubeletPath: "/var/lib/kubelet"
+
+  ## Configuration for the HCloud CSI controller
+  controller:
+    ## Replica count for the HCloud CSI controller
+    replicas: 1
+
+  ## Configuration for the HCloud CSI storageClass
+  storageClass:
+    ## Enable the HCloud CSI storageclass
+    enabled: true
+    
+    ## Name of the HCloud CSI storageclass
+    name: hcloud-csi
+
+    ## Wheather to make the HCloud CSI storageclass the default storageclass
+    default: false
+
+    ## HCloud CSI storageclass reclaim policy. Allowed values: Delete, Retain
+    reclaimPolicy: Delete
+
+  ## Enable debugging
+  debug: false  

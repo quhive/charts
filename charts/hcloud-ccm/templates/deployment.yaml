@@ -1,0 +1,97 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hcloud-ccm
+  namespace: kube-system
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: hcloud-ccm
+  template:
+    metadata:
+      labels:
+        app: hcloud-ccm
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ''
+    spec:
+      serviceAccountName: hcloud-ccm
+      dnsPolicy: Default
+      {{- if .Values.hcloud.networks.enabled }}
+      hostNetwork: true
+      {{- end }}
+      tolerations:
+        - key: "node.cloudprovider.kubernetes.io/uninitialized"
+          effect: "NoSchedule"
+          value: "true"
+        - key: "CriticalAddonsOnly"
+          operator: "Exists"
+        - key: "node-role.kubernetes.io/master"
+          effect: NoSchedule
+        - key: "node-role.kubernetes.io/control-plane"
+          effect: NoSchedule
+        - key: "node.kubernetes.io/not-ready"
+          effect: "NoSchedule"
+      containers:
+        - name: hcloud-ccm
+          image: "{{ template "image" . }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          priorityClassName: system-cluster-critical
+          command:
+            - "/bin/hcloud-cloud-controller-manager"
+            - "--cloud-provider=hcloud"
+            - "--leader-elect=false"
+            - "--allow-untagged-cloud"
+            {{- if .Values.hcloud.networks.enabled }}
+            - "--allocate-node-cidrs=true"
+            - "--cluster-cidr={{ .Values.hcloud.networks.subnet }}"
+            {{- end }}
+          resources:
+            requests:
+              cpu: 100m
+              memory: 50Mi
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: HCLOUD_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hcloud-ccm
+                  key: token
+            - name: HCLOUD_INSTANCES_ADDRESS_FAMILY
+              value: "{{ .Values.hcloud.addressFamily }}"
+            {{- if .Values.hcloud.networks.enabled }}
+            - name: HCLOUD_NETWORK
+              value: "{{ .Values.hcloud.networks.id }}"
+            - name: HCLOUD_NETWORK_DISABLE_ATTACHED_CHECK
+              value: "{{ .Values.hcloud.networks.disableAttachedCheck }}"
+            {{- end }}
+            - name: HCLOUD_LOAD_BALANCERS_ENABLED
+              value: "{{ .Values.hcloud.loadBalancers.enabled }}"
+            {{- if .Values.hcloud.loadBalancers.defaults.location }}
+            - name: HCLOUD_LOAD_BALANCERS_LOCATION
+              value: "{{ .Values.hcloud.loadBalancers.defaults.location }}"
+            {{- end }}
+            {{- if .Values.hcloud.loadBalancers.defaults.networkZone }}
+            - name: HCLOUD_LOAD_BALANCERS_NETWORK_ZONE
+              value: "{{ .Values.hcloud.loadBalancers.defaults.networkZone }}"
+            {{- end }}
+            {{- if .Values.hcloud.loadBalancers.defaults.usePrivateIp }}
+            - name: HCLOUD_LOAD_BALANCERS_USE_PRIVATE_IP
+              value: "{{ .Values.hcloud.loadBalancers.defaults.usePrivateIp }}"
+            {{- end }}
+            {{- if .Values.hcloud.loadBalancers.defaults.disablePrivateIngress }}
+            - name: HCLOUD_LOAD_BALANCERS_DISABLE_PRIVATE_INGRESS
+              value: "{{ .Values.hcloud.loadBalancers.defaults.disablePrivateIngress }}"
+            {{- end }}
+            {{- if .Values.hcloud.loadBalancers.defaults.disableIPv6 }}
+            - name: HCLOUD_LOAD_BALANCERS_DISABLE_IPV6
+              value: "{{ .Values.hcloud.loadBalancers.defaults.disableIPv6 }}"
+            {{- end }}
+            - name: HCLOUD_DEBUG
+              value: "{{ .Values.hcloud.debug }}"
+---

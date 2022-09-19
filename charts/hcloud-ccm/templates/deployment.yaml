@@ -34,11 +34,11 @@ spec:
           effect: NoSchedule
         - key: "node.kubernetes.io/not-ready"
           effect: "NoSchedule"
+      priorityClassName: system-cluster-critical
       containers:
         - name: hcloud-ccm
           image: "{{ template "image" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          priorityClassName: system-cluster-critical
           command:
             - "/bin/hcloud-cloud-controller-manager"
             - "--cloud-provider=hcloud"

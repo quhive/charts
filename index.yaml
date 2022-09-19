@@ -61,6 +61,31 @@ entries:
   - annotations:
       category: Infrastructure
     apiVersion: v2
+    appVersion: 1.6.0
+    created: "2022-09-19T18:28:00.160221322Z"
+    description: Kubernetes Container Storage Interface driver for Hetzner Cloud Volumes
+    digest: 33b0a33e4986b8be34e940fa8f75bad994aea423996484b84947ea6ecf74bcb3
+    home: https://quhive.cloud/
+    icon: https://avatars.githubusercontent.com/u/22154697?s=200&v=4
+    keywords:
+    - hetzner
+    - hetzner-cloud
+    - hcloud
+    - hcloud-container-storage-interface
+    - container-storage-interface
+    maintainers:
+    - email: 0SkillAllLuck@pm.me
+      name: 0SkillAllLuck
+    name: hcloud-csi
+    sources:
+    - https://github.com/quhive/charts
+    - https://github.com/hetznercloud/csi-driver
+    urls:
+    - https://github.com/quhive/charts/releases/download/hcloud-csi-v1.6.001/hcloud-csi-v1.6.001.tgz
+    version: v1.6.001
+  - annotations:
+      category: Infrastructure
+    apiVersion: v2
     appVersion: v1.6.0
     created: "2022-09-15T10:16:41.010484273Z"
     description: Kubernetes Container Storage Interface driver for Hetzner Cloud Volumes

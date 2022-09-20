@@ -18,4 +18,4 @@ name: hcloud-csi
 sources:
   - https://github.com/quhive/charts
   - https://github.com/hetznercloud/csi-driver
-version: v1.6.002
+version: v1.6.003

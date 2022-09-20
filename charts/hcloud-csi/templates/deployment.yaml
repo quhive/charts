@@ -54,8 +54,8 @@ spec:
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
+                  name: hcloud-csi
                   key: token
-                  name: hcloud
           livenessProbe:
             failureThreshold: 5
             httpGet:

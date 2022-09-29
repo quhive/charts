@@ -34,8 +34,16 @@ spec:
       containers:
         - name: csi-node-driver-registrar
           image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.2.0
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
             - --kubelet-registration-path={{ .Values.hcloud.node.kubeletPath | default "/var/lib/kubelet" }}/plugins/csi.hetzner.cloud/socket
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 10m
+              memory: 32Mi
           volumeMounts:
             - name: plugin-dir
               mountPath: /run/csi
@@ -46,6 +54,13 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
             - /bin/hcloud-csi-driver-node
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 10m
+              memory: 32Mi
           env:
             - name: CSI_ENDPOINT
               value: unix:///run/csi/socket
@@ -79,7 +94,14 @@ spec:
               mountPath: /dev
         - name: liveness-probe
           image: k8s.gcr.io/sig-storage/livenessprobe:v2.3.0
-          imagePullPolicy: Always
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 10m
+              memory: 32Mi
           volumeMounts:
             - name: plugin-dir
               mountPath: /run/csi

@@ -6,6 +6,34 @@ entries:
       category: Infrastructure
     apiVersion: v2
     appVersion: v1.13.0
+    created: "2022-09-29T17:10:07.955830802Z"
+    description: Kubernetes cloud-controller-manager for Hetzner Cloud
+    digest: 8d4ec16e29a774ce7dfdafb5695d591c04863e4ff6d98091e5fa512cada6d77c
+    home: https://quhive.cloud/
+    icon: https://avatars.githubusercontent.com/u/22154697?s=200&v=4
+    keywords:
+    - hetzner
+    - hetzner-cloud
+    - hcloud
+    - hcloud-cloud-controller
+    - hcloud-cloud-controller-manager
+    - cloud-controller
+    - cloud-controller-manager
+    maintainers:
+    - email: 0SkillAllLuck@pm.me
+      name: 0SkillAllLuck
+    name: hcloud-ccm
+    sources:
+    - https://github.com/quhive/charts
+    - https://github.com/hetznercloud/hcloud-cloud-controller-manager
+    urls:
+    - https://github.com/quhive/charts/releases/download/hcloud-ccm-v1.13.002/hcloud-ccm-v1.13.002.tgz
+    version: v1.13.002
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      category: Infrastructure
+    apiVersion: v2
+    appVersion: v1.13.0
     created: "2022-09-19T15:03:59.107943447Z"
     description: Kubernetes cloud-controller-manager for Hetzner Cloud
     digest: 2c48325a3495867a3296e248ac091fecf8ccc9b1c45ac6ac585c26506847e643

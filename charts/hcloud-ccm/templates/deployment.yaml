@@ -50,8 +50,11 @@ spec:
             {{- end }}
           resources:
             requests:
-              cpu: 100m
-              memory: 50Mi
+              cpu: 125m
+              memory: 128Mi
+            limits:
+              cpu: 125m
+              memory: 128Mi
           env:
             - name: NODE_NAME
               valueFrom:

@@ -15,6 +15,9 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
+## Priority class assigned to the pod
+priorityClassName: system-node-critical
+
 ## HCloud Configuration
 hcloud:
   ## HCloud API token

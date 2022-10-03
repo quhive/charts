@@ -18,6 +18,9 @@ image:
 ## Priority class assigned to the pod
 priorityClassName: system-node-critical
 
+## Affinity for the hcloud-ccm pod
+affinity: {}
+
 ## HCloud Configuration
 hcloud:
   ## HCloud API token

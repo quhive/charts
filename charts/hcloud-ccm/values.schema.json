@@ -40,6 +40,10 @@
             "type": "string",
             "description": "Priority class assigned to the pod"
         },
+        "affinity": {
+            "type": "object",
+            "description": "Affinity for the hcloud-ccm pod"
+        },
         "hcloud": {
             "type": "object",
             "description": "HCloud Configuration",

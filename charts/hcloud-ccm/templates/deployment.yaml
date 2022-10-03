@@ -35,6 +35,10 @@ spec:
         - key: "node.kubernetes.io/not-ready"
           effect: "NoSchedule"
       priorityClassName: {{ .Values.priorityClassName }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | trim | nindent 8 }}
+      {{- end }}
       securityContext:
         runAsUser: 10042
         runAsGroup: 10042

@@ -51,6 +51,7 @@ The following table lists the configurable parameters of the hcloud-ccm chart an
 | `image.pullPolicy` | Image pull policy | `IfNotPresent` |
 | `image.pullSecrets` | Image pull secrets | `[]` |
 | `priorityClassNames` | Priority class assigned to the pod | `system-node-critical` |
+| `affinity` | Affinity for the hcloud-ccm pod | `{}` |
 | `hcloud.token` | HCloud API token | `""` |
 | `hcloud.addressFamily` | Set address familiy to be managed. Allowed values: ipv4, ipv6, dualstack | `ipv4` |
 | `hcloud.network.enabled` | Enable HCloud network support | `false` |

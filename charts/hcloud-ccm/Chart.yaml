@@ -21,4 +21,4 @@ name: hcloud-ccm
 sources:
   - https://github.com/quhive/charts
   - https://github.com/hetznercloud/hcloud-cloud-controller-manager
-version: v1.13.003
+version: v1.13.004

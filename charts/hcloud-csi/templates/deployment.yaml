@@ -15,6 +15,11 @@ spec:
         app: hcloud-csi-controller
     spec:
       serviceAccountName: hcloud-csi-controller
+      priorityClassName: {{ .Values.priorityClassName }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | trim | nindent 8 }}
+      {{- end }}
       containers:
         - name: csi-attacher
           image: k8s.gcr.io/sig-storage/csi-attacher:v3.2.1

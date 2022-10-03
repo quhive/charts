@@ -31,6 +31,7 @@ spec:
           operator: Exists
         - key: CriticalAddonsOnly
           operator: Exists
+      priorityClassName: {{ .Values.priorityClassName }}
       containers:
         - name: csi-node-driver-registrar
           image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.2.0

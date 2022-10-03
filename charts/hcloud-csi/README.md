@@ -50,6 +50,8 @@ The following table lists the configurable parameters of the hcloud-csi chart an
 | `image.tag` | Image tag | `v1.6.0` |
 | `image.pullPolicy` | Image pull policy | `IfNotPresent` |
 | `image.pullSecrets` | Image pull secrets | `[]` |
+| `priorityClassNames` | Priority class assigned to the pod | `system-node-critical` |
+| `affinity` | Affinity for the hcloud-ccm pod | `{}` |
 | `hcloud.token` | HCloud API token | `""` |
 | `hcloud.node.kubeletPath` | Path of the hosts kubelet folder | `"/var/lib/kubelet"` |
 | `hcloud.controller.replicas` | Replica count for the HCloud CSI controller | `1` |

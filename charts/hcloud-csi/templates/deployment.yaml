@@ -15,6 +15,13 @@ spec:
         app: hcloud-csi-controller
     spec:
       serviceAccountName: hcloud-csi-controller
+      tolerations:
+        - effect: NoExecute
+          operator: Exists
+        - effect: NoSchedule
+          operator: Exists
+        - key: CriticalAddonsOnly
+          operator: Exists
       priorityClassName: {{ .Values.priorityClassName }}
       {{- with .Values.affinity }}
       affinity:

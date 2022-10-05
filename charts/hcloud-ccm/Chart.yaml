@@ -2,7 +2,7 @@ annotations:
   category: Infrastructure
   artifacthub.io/license: Apache-2.0
 apiVersion: v2
-appVersion: v1.13.0
+appVersion: v1.13.2
 description: Kubernetes cloud-controller-manager for Hetzner Cloud
 home: https://quhive.cloud/
 icon: https://avatars.githubusercontent.com/u/22154697?s=200&v=4
@@ -21,4 +21,4 @@ name: hcloud-ccm
 sources:
   - https://github.com/quhive/charts
   - https://github.com/hetznercloud/hcloud-cloud-controller-manager
-version: v1.13.004
+version: v1.13.200
